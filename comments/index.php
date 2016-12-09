@@ -16,7 +16,6 @@
 		  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
             <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
 		
-		
 	</head>
 	<body>
 		<!--

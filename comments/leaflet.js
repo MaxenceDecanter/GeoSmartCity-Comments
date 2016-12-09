@@ -14,6 +14,7 @@ var mymap = L.map('mapid',{
 var popup = L.popup();
 var idx_m = 0;
 var tab_markers = [];
+var markersArray = new L.layerGroup();
 var canPlaceMarker = true;
 var DEBUG = true;
                   
@@ -89,7 +90,7 @@ function onMarkerClick(e){
 	
     removeTmpMarkers();
 	selectedMarker = e.target;
-    selectedMarker.dragging.enable();
+    selectedMarker.dragging.disable();
     //displayComment(selectedMarker);
 	if(selectedMarker != tmpMarker){
 		$('#comment-page').show("slow");
@@ -126,12 +127,12 @@ document.getElementById('addr').addEventListener('input', function (e) {
     addr_search();
 }, false);
 
-var radios = document.forms["add_comment_form"].elements["radio_button"];
+/*var radios = document.forms["add_comment_form"].elements["radio_button"];
 for(var i = 0, max = radios.length; i < max; i++) {
     radios[i].onclick = function() {
        change_icon(this.value);
     }
-}
+}*/
 
 
 /*********************************************************/
@@ -191,7 +192,7 @@ function modifyComment(bool){
 		mymap.removeLayer(selectedMarker);
         mymap.removeLayer(tmpMarker);
 	}
-    //selectedMarker.dragging.disable();
+    selectedMarker.dragging.disable();
 	selectedMarker = "s";
 }
 
@@ -202,29 +203,29 @@ function modifyComment(bool){
 * @param {string} addr
 * @param {string} iconChosen
 */
-function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
+function addMarker(lat, lng, addr, iconChosen){
     var marker;
     console.log(iconChosen);
     switch(iconChosen) {
         case "Problem":
-            marker = L.marker(L.latLng(lat, lng), {icon: problemIcon}).addTo(mymap);
+            marker = L.marker(L.latLng(lat, lng), {icon: problemIcon}).addTo(markersArray);
             break;
         case "Information":
-            marker = L.marker(L.latLng(lat, lng), {icon: infoIcon}).addTo(mymap);
+            marker = L.marker(L.latLng(lat, lng), {icon: infoIcon}).addTo(markersArray);
             break;
         case "Event":
-            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(mymap);
+            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
             break;
         case "Other":
-            marker = L.marker(L.latLng(lat, lng), {icon: otherIcon}).addTo(mymap);
+            marker = L.marker(L.latLng(lat, lng), {icon: otherIcon}).addTo(markersArray);
             break;
         default:
-            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(mymap);
+            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
     }
 	var latlng = L.latLng(lat, lng);
 	tab_markers.push(marker);
     if(addr != undefined){
-        marker.bindPopup("<b>Title: </b>"+title+"</br><b>Type: </b>"+iconChosen+"</br><b>Created on: </b>"+d_start+"</br><b>Description: </b>"+description+""); // Modify by DECANTER Maxence
+        marker.bindPopup(addr); // Modify by DECANTER Maxence
     }else{
         var address = "";
         $.ajax({
@@ -241,6 +242,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
         });
         
     }
+	markersArray.addTo(mymap);
 	marker.on("click", onMarkerClick);
 	return marker;
 }
@@ -304,7 +306,7 @@ function displayServerComments(){
 						lat = coord[0];
 						lon = coord[1];
 						addr = obj.position.properties.name;
-						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description);
+						addMarker(lat, lon, addr, capitalize(obj.category));
 					}
                 }
             });
@@ -339,7 +341,7 @@ function removeCurrentMarker(){
 function addr_search() {
 	var inp = document.getElementById("addr");
     $('#search_answers').empty();
-	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+	$.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&lat=' + inp.value, function(data) {
 		var items = [];
 		$.each(data, function(key, val) {
 			$('#search_answers').append("<li><a href='#' onclick='onSearchClick(" +
@@ -587,7 +589,7 @@ function displayServerCommentsByCategory(cat){
 							lat = coord[0];
 							lon = coord[1];
 							addr = obj.position.properties.name;
-						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description);
+						addMarker(lat, lon, addr, capitalize(obj.category));
 						}
 					}
                 }
@@ -659,7 +661,8 @@ var typeComment = "";
 function selectIcon(evt, iconName, type){
 	this.typeComment = type;
 	openIcon(event, iconName);
-	removeMarker(tab_markers);
+	tab_markers = [];
+	markersArray.clearLayers();
 	displayServerCommentsByCategory(type);
 	change_icon(capitalize(type));
 }
