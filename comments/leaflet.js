@@ -671,7 +671,6 @@ function putActualTime(){
 }
 
 /****************** Function add by HONGYU Zhao *****************/
-
 //Showing each icon's content
 function openIcon(evt, iconName) {
     var i,iconcentent, icon;
@@ -687,17 +686,62 @@ function openIcon(evt, iconName) {
     evt.currentTarget.className += "active";
 }
 //Open time tab
-function opentimeTab(){
-$(".opentimeTab").click(function() {
-    $(".chooseDate").toggle();
-});
-    $('.addNow').click(function() {
-        $('.addcomments').toggle();
-    });
+function infoDate(){
+    var info_date = document.getElementById("info-date");
+    if(info_date.style.display === 'none') {
+        info_date.style.display = 'block';
+    } else {
+        info_date.style.display = 'none';
+    }
 }
-
+function problemDate() {
+    var problem_date = document.getElementById("problem-date");
+    if(problem_date.style.display === 'none') {
+        problem_date.style.display = 'block';
+    } else {
+        problem_date.style.display = 'none';
+    }
+}
+function eventDate() {
+    var event_date = document.getElementById("event-date");
+    if(event_date.style.display === 'none') {
+        event_date.style.display = 'block';
+    } else {
+        event_date.style.display = 'none';
+    }
+}
 function tootips() {
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
+}
+//Close mode contents
+//    conbine several functions for each cancel btn
+function CbtnInfo(){
+    validateComment(false);
+    cancelInfo();
+}
+function cancelInfo() {
+    $("#mode-info").hide();
+}
+function CbtnOther(){
+    validateComment(false);
+    cancelOther();
+}
+function cancelOther() {
+    $("#mode-other").hide();
+}
+function CbtnEvent(){
+    validateComment(false);
+    cancelEvent();
+}
+function cancelEvent() {
+    $("#mode-event").hide();
+}
+function CbtnProblem(){
+    validateComment(false);
+    cancelProblem();
+}
+function cancelProblem() {
+    $("#mode-problem").hide();
 }
