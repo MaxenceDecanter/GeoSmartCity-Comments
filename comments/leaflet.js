@@ -54,8 +54,8 @@ function onMapClick(e) {
 	if(canPlaceMarker){
 		tmpMarker = addMarker(e.latlng.lat, e.latlng.lng);
 		$('#comment-page').show("slow");
-		$('#add-comment').show("slow");
-        $('#modify-comment').hide("slow");		
+		//$('#add-comment').show("slow");
+        //$('#modify-comment').hide("slow");		
 		canPlaceMarker=false;
 	}
 }
@@ -72,8 +72,8 @@ function onSearchClick(lat, lon, addr) {
 	if(canPlaceMarker){
 		tmpMarker = addMarker(lat, lon, addr, capitalize(typeComment));
 		$('#comment-page').show("slow");
-		$('#add-comment').show("slow");
-        $('#modify-comment').hide("slow");		
+		//$('#add-comment').show("slow");
+        //$('#modify-comment').hide("slow");		
 		canPlaceMarker=false;
 	}
 }
@@ -93,9 +93,9 @@ function onMarkerClick(e){
     selectedMarker.dragging.disable();
     //displayComment(selectedMarker);
 	if(selectedMarker != tmpMarker){
-		$('#comment-page').show("slow");
-		$('#modify-comment').show("slow");
-        $('#add-comment').hide("slow");
+		$('#comment-page').hide();
+		//$('#modify-comment').show("slow");
+        //$('#add-comment').hide("slow");
 		//mymap.removeLayer(marker);
 		selectedMarker.getPopup().togglePopup();
 		lat = e.target._latlng.lat;
@@ -203,7 +203,7 @@ function modifyComment(bool){
 * @param {string} addr
 * @param {string} iconChosen
 */
-function addMarker(lat, lng, addr, iconChosen){
+function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
     var marker;
     console.log(iconChosen);
     switch(iconChosen) {
@@ -223,9 +223,9 @@ function addMarker(lat, lng, addr, iconChosen){
             marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
     }
 	var latlng = L.latLng(lat, lng);
-	tab_markers.push(marker);
+	tab_markers.push([marker,title, iconChosen, d_start, description]);
     if(addr != undefined){
-        marker.bindPopup(addr); // Modify by DECANTER Maxence
+        marker.bindPopup(addr+'<button onclick="previewComment();">Preview</button>'); // Modify by DECANTER Maxence
     }else{
         var address = "";
         $.ajax({
@@ -306,7 +306,7 @@ function displayServerComments(){
 						lat = coord[0];
 						lon = coord[1];
 						addr = obj.position.properties.name;
-						addMarker(lat, lon, addr, capitalize(obj.category));
+						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description);
 					}
                 }
             });
@@ -341,7 +341,7 @@ function removeCurrentMarker(){
 function addr_search() {
 	var inp = document.getElementById("addr");
     $('#search_answers').empty();
-	$.getJSON('http://nominatim.openstreetmap.org/reverse?format=json&lat=' + inp.value, function(data) {
+	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
 		var items = [];
 		$.each(data, function(key, val) {
 			$('#search_answers').append("<li><a href='#' onclick='onSearchClick(" +
@@ -419,20 +419,43 @@ function createComment(){
 }
 
 /**
-*   Displays the comment in the console
+*   Displays the comment 
 */
 function previewComment(){
-    f = document.getElementById('add-comment-form');
-    
+	$('#comment-page').hide();
+	$('#preview-comment').show();
+	console.log(tab_markers);
+	console.log(selectedMarker);
+	console.log(tab_markers[1][1]);
+	var isFind = 0;
+	var i = 0;
+	while(isFind !=1){
+		if(selectedMarker === tab_markers[i][0]){
+			title = tab_markers[i][1];
+			type = tab_markers[i][2];
+			date = tab_markers[i][3];
+			description = tab_markers[i][4];
+			isFind = 1;
+		}
+		i++;
+	}
+	var d = $('#preview-comment');
+	d.empty();
+	d.append('<p><strong>Title:</strong> '+title+'</p>');
+	d.append('<p><strong>Type:</strong> '+type+'</p>');
+	d.append('<p><strong>Created on:</strong> '+date+'</p>');
+	d.append('<p><strong>Description:</strong> '+description+'</p>');
+	
+    /*f = document.getElementById('add-comment-form');
     title= f['title'].value;
     description = f['description'].value;
     type=$('#add-comment-form input:checked')[0].value;
     //if(type=="Other")
     //    type=f['other'].value;
     f.reset();
-    tmpComment = new Comment(title, description, type, duration);
+    tmpComment = new Comment(title, description, type, date_creation, end);
     console.log(tmpComment);
-    return tmpComment;
+    return tmpComment;*/
 }
 
 /**
@@ -589,7 +612,7 @@ function displayServerCommentsByCategory(cat){
 							lat = coord[0];
 							lon = coord[1];
 							addr = obj.position.properties.name;
-						addMarker(lat, lon, addr, capitalize(obj.category));
+						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description);
 						}
 					}
                 }
@@ -690,17 +713,62 @@ function openIcon(evt, iconName) {
     evt.currentTarget.className += "active";
 }
 //Open time tab
-function opentimeTab(){
-$(".opentimeTab").click(function() {
-    $(".chooseDate").toggle();
-});
-    $('.addNow').click(function() {
-        $('.addcomments').toggle();
-    });
+function infoDate(){
+    var info_date = document.getElementById("info-date");
+    if(info_date.style.display === 'none') {
+        info_date.style.display = 'block';
+    } else {
+        info_date.style.display = 'none';
+    }
 }
-
+function problemDate() {
+    var problem_date = document.getElementById("problem-date");
+    if(problem_date.style.display === 'none') {
+        problem_date.style.display = 'block';
+    } else {
+        problem_date.style.display = 'none';
+    }
+}
+function eventDate() {
+    var event_date = document.getElementById("event-date");
+    if(event_date.style.display === 'none') {
+        event_date.style.display = 'block';
+    } else {
+        event_date.style.display = 'none';
+    }
+}
 function tootips() {
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
+}
+//Close mode contents
+//    conbine several functions for each cancel btn
+function CbtnInfo(){
+    validateComment(false);
+    cancelInfo();
+}
+function cancelInfo() {
+    $("#mode-info").hide();
+}
+function CbtnOther(){
+    validateComment(false);
+    cancelOther();
+}
+function cancelOther() {
+    $("#mode-other").hide();
+}
+function CbtnEvent(){
+    validateComment(false);
+    cancelEvent();
+}
+function cancelEvent() {
+    $("#mode-event").hide();
+}
+function CbtnProblem(){
+    validateComment(false);
+    cancelProblem();
+}
+function cancelProblem() {
+    $("#mode-problem").hide();
 }

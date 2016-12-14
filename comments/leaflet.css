@@ -34,26 +34,84 @@ ul > li {
     color: #ADD8E6;
     text-decoration: underline;
 }
-
+.languageBar {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	height: 20px;
+}
+#FI{
+	width: 50px;
+	height: 50px;
+	z-index:2;
+	color: white;
+	background-color: rgb(138, 230, 0);
+	position: absolute;
+	border-radius:5px;
+	padding: 10px;
+	left: 96%;
+	margin-top: 20px;
+}
+#EN{
+	width: 50px;
+	height: 50px;
+	z-index:2;
+	color: white;
+	background-color: rgb(138, 230, 0);
+	position: absolute;
+	border-radius:5px;
+	padding: 10px;
+	left: 92%;
+	margin-top: 20px;
+}
+#EN:hover,
+#FI:hover{
+	background-color: #4d4d4c;
+}
 #map-form a:active{
     color: #FFFFFF;
 }
 
 #comment-page {
-	width: 450px;
+	width: 400px;
 	height: auto;
 	z-index:2;
     color: white;
     background-color: rgb(138, 230, 0);
 	position:absolute;
-	border-radius:25px;
+	border-radius:5px;
 	padding: 10px;
-	left:10px;
-	top:10vh;
-	/*display:none;*/
+	left:0;
+	top: 0;
+	display:none;
+}
+.comment-header{
+	display: inline;
+	border-bottom: 1px solid white;
 }
 
-
+#page-name{
+	text-align: center;
+	font-size: 1.1vw;
+	font-family: sans-serif,Verdana;
+	font-weight: lighter;
+}
+#Infopic{
+	height:25px;
+	width:25px;
+	/*margin-right:15px;*/
+	margin-bottom:5px;
+	border:0px;
+	/*float: left;*/
+}
+#Commentpic{
+	height:25px;
+	width:25px;
+	/*margin-left:15px;*/
+	margin-bottom:5px;
+	border:0px;
+	/*float: right;*/
+}
 #testing-comment {
 	z-index:2;
 	position:absolute;
@@ -117,15 +175,38 @@ ul > li {
 
 #modeList > ul{
 	border-top: 1px solid whitesmoke;
-	/*border-bottom: 1px solid whitesmoke;*/
+	border-bottom: 1px solid whitesmoke;
 }
 #modeList > ul > li{
 	display: inline;
 	position: relative;
 	cursor: pointer;
+	margin-bottom: 3px;
 }
-#modeList > ul > li > img:hover{
-	width: 120%;
+
+#mode-info,
+#mode-event,
+#mode-problem,
+#mode-other{
+	display: none;
+}
+.infoActive{
+	border-bottom:3px solid yellow;
+}
+#info:focus{
+	border-bottom:3px solid yellow;
+}
+#info:hover{
+	border-bottom:3px solid yellow;
+}
+#other:hover{
+	border-bottom:3px solid blue;
+}
+#event:hover{
+	border-bottom:3px solid green;
+}
+#problem:hover{
+	border-bottom:3px solid red;
 }
 
 /*Hide mode tabs before the each icons are clicked*/
@@ -146,12 +227,6 @@ ul > li {
 .SPC > li{
 	display: inline;
 }
-/*#add-comment {*/
-	/*display:none;*/
-/*}*/
-
-/*#modify-comment {*/
-	/*display:none;*/
-/*}*/
-
-
+.date-tab{
+	display: none;
+}
