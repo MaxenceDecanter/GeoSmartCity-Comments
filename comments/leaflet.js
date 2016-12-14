@@ -53,7 +53,7 @@ function onMapClick(e) {
     removeTmpMarkers();
 	if(canPlaceMarker){
 		tmpMarker = addMarker(e.latlng.lat, e.latlng.lng);
-		$('#comment-page').show("slow");
+		$('#comment-page').show();
 		//$('#add-comment').show("slow");
         //$('#modify-comment').hide("slow");		
 		canPlaceMarker=false;
@@ -71,7 +71,7 @@ function onSearchClick(lat, lon, addr) {
     removeTmpMarkers();
 	if(canPlaceMarker){
 		tmpMarker = addMarker(lat, lon, addr, capitalize(typeComment));
-		$('#comment-page').show("slow");
+		$('#comment-page').show();
 		//$('#add-comment').show("slow");
         //$('#modify-comment').hide("slow");		
 		canPlaceMarker=false;
@@ -225,7 +225,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 	var latlng = L.latLng(lat, lng);
 	tab_markers.push([marker,title, iconChosen, d_start, description]);
     if(addr != undefined){
-        marker.bindPopup(addr+'<button onclick="previewComment();">Preview</button>'); // Modify by DECANTER Maxence
+        marker.bindPopup(addr); // Modify by DECANTER Maxence
     }else{
         var address = "";
         $.ajax({
@@ -424,9 +424,6 @@ function createComment(){
 function previewComment(){
 	$('#comment-page').hide();
 	$('#preview-comment').show();
-	console.log(tab_markers);
-	console.log(selectedMarker);
-	console.log(tab_markers[1][1]);
 	var isFind = 0;
 	var i = 0;
 	while(isFind !=1){
@@ -686,6 +683,7 @@ function selectIcon(evt, iconName, type){
 	openIcon(event, iconName);
 	tab_markers = [];
 	markersArray.clearLayers();
+	tmpMarker.addTo(mymap);
 	displayServerCommentsByCategory(type);
 	change_icon(capitalize(type));
 }
