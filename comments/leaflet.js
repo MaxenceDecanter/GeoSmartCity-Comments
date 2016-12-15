@@ -11,6 +11,9 @@ var mymap = L.map('mapid',{
 		scaleControl:false,
         minZoom:4
     });
+	
+mymap.zoomControl.setPosition('bottomright');
+	
 var popup = L.popup();
 var idx_m = 0;
 var tab_markers = [];
