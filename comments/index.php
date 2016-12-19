@@ -12,8 +12,7 @@
 		 <!-- Load Leaflet from CDN-->
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
-		<!-- Load language-->
-		<script src="lang.js"></script>
+
 	</head>
 	<body>
 <!--    language btns-->
@@ -152,6 +151,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 		<div id="mapid"></div>
 		<!-- Loading local js -->

@@ -695,9 +695,68 @@ function selectIcon(evt, iconName, type){
 
 var actualTime = 0;
 
+/**
+*	Put actualTime to 1 if you want to use the actual time for the database
+*
+*	Add by DECANTER Maxence
+*
+*/
 function putActualTime(){
 	this.actualTime = 1;
 }
+
+
+/**
+*	Make statistics of number of comments in database and display in a div
+*
+*	Add by DECANTER Maxence
+*
+*/
+function stat(){
+	var total = 0;
+	var ev = 0;
+	var info = 0;
+	var other = 0;
+	var problem =0;
+    var arrayComments;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+			
+            arrayComments = jQuery.parseJSON(xhttp.responseText);
+            console.log(arrayComments);
+            arrayComments.forEach(function(obj){
+                //console.log(obj);
+                if(!obj.position){
+                    console.log("Problem with this marker:");
+                    console.log(obj);
+                }
+                else{
+					total += 1;
+					if(obj.category === 'event')
+						ev += 1;
+					else if(obj.category === 'information')
+						info += 1;
+					else if(obj.category === 'other')
+						other += 1;
+					else if(obj.category === 'problem')
+						problem += 1;
+                }
+            });
+			var d = $('#stat');
+			d.empty();
+			d.append('<p><strong>Total:</strong> '+total+'</p>');
+			d.append('<p><strong>Event:</strong> '+ev+'</p>');
+			d.append('<p><strong>Information:</strong> '+info+'</p>');
+			d.append('<p><strong>Other:</strong> '+other+'</p>');
+			d.append('<p><strong>Problem:</strong> '+problem+'</p>');
+        }
+    };
+	
+    xhttp.open("GET", 'http://localhost/comments/baguette/marker.php', true);
+    xhttp.send();
+}
+
 
 /****************** Function add by HONGYU Zhao *****************/
 
