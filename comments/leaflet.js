@@ -3,16 +3,20 @@ Licensed under the EUPL V.1.1
 by Benjamin D'HOOP & Guillaume KLEINPOORT
 */
 
-
 var mymap = L.map('mapid',{
-        center:[60.4500, 22.2667],
-        zoom:14,
-        zoomControl:true,	
-		scaleControl:false,
-        minZoom:4
-    });
+	center:[60.4500, 22.2667],
+	zoom:14,
+	zoomControl:true,	
+	scaleControl:false,
+	minZoom:4
+});
 	
 mymap.zoomControl.setPosition('bottomright');
+mymap.locate({setView: true, maxZoom: 14});
+	
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(mymap);
 	
 var popup = L.popup();
 var idx_m = 0;
@@ -21,13 +25,8 @@ var markersArray = new L.layerGroup();
 var canPlaceMarker = true;
 var DEBUG = true;
                   
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(mymap);
-
-mymap.locate({setView: true, maxZoom: 14});
-
 //displayServerComments();
+$('#comment-page').show();
 
 var LeafIcon = L.Icon.extend({
     options: {
@@ -125,6 +124,7 @@ function locationOfUserMarker(e){
 
 mymap.on('click', onMapClick);
 mymap.on('locationfound', locationOfUserMarker);
+
 
 document.getElementById('addr').addEventListener('input', function (e) {
     addr_search();
@@ -228,7 +228,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 	var latlng = L.latLng(lat, lng);
 	tab_markers.push([marker,title, iconChosen, d_start, description]);
     if(addr != undefined){
-        marker.bindPopup(addr); // Modify by DECANTER Maxence
+        marker.bindPopup(addr+"<button onclick='previewComment();'>Modify</button>"); // Modify by DECANTER Maxence
     }else{
         var address = "";
         $.ajax({
@@ -355,6 +355,7 @@ function addr_search() {
 	});
 }
 
+
 function change_icon(name){
     switch(name) {
         case "Problem":
@@ -422,7 +423,7 @@ function createComment(){
 }
 
 /**
-*   Displays the comment 
+*   Displays the comment on preview-comment div
 */
 function previewComment(){
 	$('#comment-page').hide();
@@ -686,7 +687,8 @@ function selectIcon(evt, iconName, type){
 	openIcon(event, iconName);
 	tab_markers = [];
 	markersArray.clearLayers();
-	tmpMarker.addTo(mymap);
+	if(tmpMarker != "t")
+		tmpMarker.addTo(mymap);
 	displayServerCommentsByCategory(type);
 	change_icon(capitalize(type));
 }
@@ -715,6 +717,7 @@ function openIcon(evt, iconName) {
 }
 //Open time tab
 function infoDate(){
+	this.actualTime = 0;
     var info_date = document.getElementById("info-date");
     if(info_date.style.display === 'none') {
         info_date.style.display = 'block';

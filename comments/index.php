@@ -12,12 +12,14 @@
 		 <!-- Load Leaflet from CDN-->
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
+		<!-- Load language-->
+		<script src="lang.js"></script>
 	</head>
 	<body>
 <!--    language btns-->
-        <button class="btn btn-block" id="FI">FI</button>
-        <button class="btn btn-block" id="EN">EN</button>
-
+			<button class="btn btn-block" id="FI">FI</button>
+			<button class="btn btn-block" id="EN">EN</button>
+		
 		<div id="preview-comment"></div>
 		
         <div class="col-sm-12" id="comment-page">
