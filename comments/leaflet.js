@@ -11,7 +11,7 @@ var mymap = L.map('mapid',{
 	minZoom:4
 });
 	
-mymap.zoomControl.setPosition('bottomright');
+mymap.zoomControl.setPosition('bottomright');  // Add by DECANTER Maxence
 mymap.locate({setView: true, maxZoom: 14});
 	
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -171,16 +171,20 @@ function removeTmpMarkers(){
 function validateComment(bool){
 	
     comment = createComment();
-	tmpMarker['comment']= comment;
-	if(!bool){
-		mymap.removeLayer(tmpMarker);
-	}else{
-		addServerMarker(tmpMarker);
-		console.log(tmpMarker);
+	if(comment == undefined){                   //
+		console.log("missing argument");		// Add by DECANTER Maxence
+	}else{										//
+		tmpMarker['comment']= comment;
+		if(!bool){
+			mymap.removeLayer(tmpMarker);
+		}else{
+			addServerMarker(tmpMarker);
+			console.log(tmpMarker);
+		}
+		tmpMarker = "t";
+		canPlaceMarker=true;
+		actualTime = 0;
 	}
-	tmpMarker = "t";
-	canPlaceMarker=true;
-	actualTime = 0;
 }
 
 
@@ -377,11 +381,12 @@ function change_icon(name){
 var tmpComment;
 /**
 *   Creates a new comment with the given informations from the form
+*
+*	Modify by DECANTER Maxence
+*
 *   @return {Comment} The new Comment object.
 */
 function createComment(){
-	console.log(typeComment);
-	console.log(actualTime);
 	f = document.getElementsByClassName('iconContent');
 	
 	if(typeComment == 'information'){
@@ -415,15 +420,22 @@ function createComment(){
 		date_creation = changeFormat(d, start_time);
 		end = changeFormat(d,end_time);
 	}
-	type = this.typeComment;
-	tmpComment = new Comment(title, description, type, date_creation, end);
-	console.log(tmpComment);
+	if(title == '' || description == '' || date_creation.length != 19 || end.length != 19){
+		alert("Something is missing in the form !");
+	}else{
+		type = this.typeComment;
+		tmpComment = new Comment(title, description, type, date_creation, end);
+		console.log(tmpComment);
+	}
 	
 	return tmpComment;
 }
 
 /**
 *   Displays the comment on preview-comment div
+*
+*	Modify by DECANTER Maxence
+*
 */
 function previewComment(){
 	$('#comment-page').hide();
@@ -547,7 +559,7 @@ function updateMarkerDatabase(){
                     console.log("Problem with this marker:");
                     console.log(obj);
                 }
-                else if(obj.d_end == "0000-00-00 00:00:00"){
+                else if(obj.d_end == "1999-01-01 00:00:00"){
 					console.log("No end for this marker");
 				}else{
 					if(obj.visible == "1" && compareDate(todayDate(), obj.d_end) === 1)
