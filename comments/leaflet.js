@@ -53,12 +53,13 @@ var tmpMarker = "t";
 */
 function onMapClick(e) {
     removeTmpMarkers();
-	if(canPlaceMarker){
+	if(canPutMarker(e.latlng.lat, e.latlng.lng) === 1){
 		tmpMarker = addMarker(e.latlng.lat, e.latlng.lng);
 		$('#comment-page').show();
 		//$('#add-comment').show("slow");
         //$('#modify-comment').hide("slow");		
-		canPlaceMarker=false;
+	}else{
+		alert("There is already a comment at this place. Please, update it.");
 	}
 }
 
@@ -71,13 +72,14 @@ function onMapClick(e) {
 function onSearchClick(lat, lon, addr) {
     goTo(lat, lon);
     removeTmpMarkers();
-	if(canPlaceMarker){
+	//if(canPutMarker(lat, lon) === 1){
 		tmpMarker = addMarker(lat, lon, addr, capitalize(typeComment));
 		$('#comment-page').show();
 		//$('#add-comment').show("slow");
-        //$('#modify-comment').hide("slow");		
-		canPlaceMarker=false;
-	}
+		//$('#modify-comment').hide("slow");
+	//}else{
+	//	alert("There is already a comment at this place. Please, update it.");
+	//}		
 }
 
 var selectedMarker = "s";
@@ -154,7 +156,7 @@ function goTo(lat, lng){
 *   Removes the temporary markers of the map
 */
 function removeTmpMarkers(){
-	$('#comment-page').hide();
+	//$('#comment-page').hide();
     $('#modify-comment').hide();
 	$('#add-comment').hide();
     if(tmpMarker != "t")
@@ -212,7 +214,6 @@ function modifyComment(bool){
 */
 function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
     var marker;
-    console.log(iconChosen);
     switch(iconChosen) {
         case "Problem":
             marker = L.marker(L.latLng(lat, lng), {icon: problemIcon}).addTo(markersArray);
@@ -230,7 +231,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
             marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
     }
 	var latlng = L.latLng(lat, lng);
-	tab_markers.push([marker,title, iconChosen, d_start, description]);
+	tab_markers.push([marker,title, iconChosen, d_start, description]);    // Modify by DECANTER Maxence
     if(addr != undefined){
         marker.bindPopup(addr+"<button onclick='previewComment();'>Modify</button>"); // Modify by DECANTER Maxence
     }else{
@@ -435,7 +436,6 @@ function createComment(){
 *   Displays the comment on preview-comment div
 *
 *	Modify by DECANTER Maxence
-*
 */
 function previewComment(){
 	$('#comment-page').hide();
@@ -443,6 +443,7 @@ function previewComment(){
 	var isFind = 0;
 	var i = 0;
 	while(isFind !=1){
+		console.log(tab_markers[i][0]._latlng);
 		if(selectedMarker === tab_markers[i][0]){
 			title = tab_markers[i][1];
 			type = tab_markers[i][2];
@@ -769,6 +770,17 @@ function stat(){
     xhttp.send();
 }
 
+function canPutMarker(lat, lng){
+	var aux;
+	for(var i = 0; i<tab_markers.length; i++){
+		if(tab_markers[i][0]._latlng.lat === lat && tab_markers[i][0]._latlng.lng === lng )
+			aux = 0;
+		else
+			aux =1;
+	}
+	
+	return aux;
+}
 
 /****************** Function add by HONGYU Zhao *****************/
 
