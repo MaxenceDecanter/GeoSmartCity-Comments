@@ -53,14 +53,12 @@ var tmpMarker = "t";
 */
 function onMapClick(e) {
     removeTmpMarkers();
-	if(canPutMarker(e.latlng.lat, e.latlng.lng) === 1){
-		tmpMarker = addMarker(e.latlng.lat, e.latlng.lng);
-		$('#comment-page').show();
-		//$('#add-comment').show("slow");
-        //$('#modify-comment').hide("slow");		
-	}else{
-		alert("There is already a comment at this place. Please, update it.");
-	}
+	tmpMarker = addMarker(e.latlng.lat, e.latlng.lng);
+	$('#comment-page').show();
+	//$('.iconContent').show();
+	//$('#add-comment').show("slow");
+    //$('#modify-comment').hide("slow");		
+	
 }
 
 /**
@@ -91,13 +89,13 @@ var selectedMarker = "s";
 function onMarkerClick(e){
 	console.log(e);    //e.target gives the Object on which the event is called
     goTo(e.target._latlng.lat, e.target._latlng.lng);
-	
+	$('.iconContent').hide();
     removeTmpMarkers();
 	selectedMarker = e.target;
     selectedMarker.dragging.disable();
     //displayComment(selectedMarker);
 	if(selectedMarker != tmpMarker){
-		$('#comment-page').hide();
+		//$('#comment-page').hide();
 		//$('#modify-comment').show("slow");
         //$('#add-comment').hide("slow");
 		//mymap.removeLayer(marker);
@@ -127,10 +125,10 @@ function locationOfUserMarker(e){
 mymap.on('click', onMapClick);
 mymap.on('locationfound', locationOfUserMarker);
 
-
+/*
 document.getElementById('addr').addEventListener('input', function (e) {
     addr_search();
-}, false);
+}, false);*/
 
 /*var radios = document.forms["add_comment_form"].elements["radio_button"];
 for(var i = 0, max = radios.length; i < max; i++) {
@@ -235,20 +233,15 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
     if(addr != undefined){
         marker.bindPopup(addr+"<button onclick='previewComment();'>Modify</button>"); // Modify by DECANTER Maxence
     }else{
-        var address = "";
-        $.ajax({
-        url: 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+lat+'&lon='+ lng,
-        type: 'get',
-        dataType: 'json',
-        cache: false,
-        success: function(data){
-            address = data.display_name;
-            marker.bindPopup(address).openPopup();
-            //marker.bindPopup(address).openPopup();
-        },
-        async:true,
-        });
-        
+        var geocoder = new google.maps.Geocoder();																				//
+		var latlng = new google.maps.LatLng(lat, lng);																			//
+		geocoder.geocode({'latLng': latlng}, function(results, status) {														//
+		/* Si le géocodage inversé a réussi */																					// Add by DECANTER Maxence
+		if (status == google.maps.GeocoderStatus.OK) {																			//
+			console.log(results[0].formatted_address);																			//
+			marker.bindPopup(results[0].formatted_address+"<button onclick='previewComment();'>Modify</button>").openPopup();	//
+		}																														//
+		});    
     }
 	markersArray.addTo(mymap);
 	marker.on("click", onMarkerClick);
@@ -258,15 +251,20 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 Similar to addMarker, but adds it to the server database
 */
 function addServerMarker(marker){
-	console.log(marker.comment);
     com = marker.comment;
     lat = marker._latlng.lat;
     lng = marker._latlng.lng;
-    
+	pop = marker.getPopup().getContent(); //
+	var address = '';					  // Add by DECANTER Maxence
+	var i =0;							  //
+	while(pop.substring(i,i+1) != '<'){   //
+		address += pop.substring(i,i+1);  //
+		i++;							  //
+	}
     r = $.post( "http://localhost/comments/baguette/marker.php", { name: com.title, 
                           d_start: com.date_creation, 
                           d_end: com.end, 
-                          position: '{"type":"Feature","geometry":{"type":"Point","coordinates":['+lat+','+lng+']},"properties":{"name":"'+marker.getPopup().getContent()+'"}}',
+                          position: '{"type":"Feature","geometry":{"type":"Point","coordinates":['+lat+','+lng+']},"properties":{"name":"'+address+'"}}',
                           description: com.description,
                           category: com.type.toLowerCase(),
                           visible: true}
@@ -342,24 +340,6 @@ function removeMarker(marker){
 function removeCurrentMarker(){
 	mymap.removeLayer(selectedMarker);	
 }
-
-/**
-*	Displays the list of matching addresses according to the input
-*/
-function addr_search() {
-	var inp = document.getElementById("addr");
-    $('#search_answers').empty();
-	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
-		var items = [];
-		$.each(data, function(key, val) {
-			$('#search_answers').append("<li><a href='#' onclick='onSearchClick(" +
-					val.lat + ", " + val.lon + ", \"" + val.display_name +"\");'>" + val.display_name +
-					"</a></li>"
-			);
-		});
-	});
-}
-
 
 function change_icon(name){
     switch(name) {
@@ -508,6 +488,32 @@ function Comment(title, description, type, date_creation, end){
 }
 
 /****************** Function add by DECANTER Maxence *****************/
+
+/**
+* Find the address the user input
+*
+* Add by DECANTER Maxence
+*/
+function addr_search() {
+	
+	var addressInput = document.getElementById('addr').value;
+	var geocoder = new google.maps.Geocoder();
+
+	geocoder.geocode({address: addressInput}, function(results, status) {
+
+	if (status == google.maps.GeocoderStatus.OK) {
+
+		var lat = results[0].geometry.location.lat();
+	    var lng = results[0].geometry.location.lng();
+	    var ad = results[0].formatted_address;
+		goTo(lat, lng);
+		removeTmpMarkers();
+		tmpMarker = addMarker(lat, lng, ad, capitalize(typeComment));
+		$('#comment-page').show();
+				
+	}
+	});
+}
 
 /**
 *	Give the right format to put date in the database
@@ -770,6 +776,14 @@ function stat(){
     xhttp.send();
 }
 
+/**
+*	Check if thereis no comment on the same coordinates
+*
+*	Add by DECANTER Maxence
+*
+*	@param {float} lat
+*	@param {float} lng
+*/
 function canPutMarker(lat, lng){
 	var aux;
 	for(var i = 0; i<tab_markers.length; i++){
