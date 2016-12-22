@@ -52,9 +52,7 @@
                     </li>
                 </ul>
             <div class="col-sm-12">
-                <input type="text" class="form-control" id="addr" placeholder="Address..">
-				<button class="btn btn-default" style="width: 45%" onclick="addr_search();">Search</button>
-                <!--<ul id="search_answers"></ul>-->
+                <input type="text" class="form-control" id="addr" placeholder="Address.." onKeyPress="if(event.keyCode == 13) addr_search();">
             </div>
 
             <!--Information mode-->

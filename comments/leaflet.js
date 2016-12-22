@@ -237,9 +237,9 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 		var latlng = new google.maps.LatLng(lat, lng);																			//
 		geocoder.geocode({'latLng': latlng}, function(results, status) {														//
 		/* Si le géocodage inversé a réussi */																					// Add by DECANTER Maxence
-		if (status == google.maps.GeocoderStatus.OK) {																			//
-			console.log(results[0].formatted_address);																			//
+		if (status == google.maps.GeocoderStatus.OK) {																			//																		//
 			marker.bindPopup(results[0].formatted_address+"<button onclick='previewComment();'>Modify</button>").openPopup();	//
+			$(".form-control:eq(0)").val(results[0].formatted_address);															//
 		}																														//
 		});    
     }
@@ -509,8 +509,8 @@ function addr_search() {
 		goTo(lat, lng);
 		removeTmpMarkers();
 		tmpMarker = addMarker(lat, lng, ad, capitalize(typeComment));
+		$(".form-control:eq(0)").val(ad);	
 		$('#comment-page').show();
-				
 	}
 	});
 }
