@@ -231,7 +231,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 	var latlng = L.latLng(lat, lng);
 	tab_markers.push([marker,title, iconChosen, d_start, description]);    // Modify by DECANTER Maxence
     if(addr != undefined){
-        marker.bindPopup(addr+"<button onclick='previewComment();'>Modify</button>"); // Modify by DECANTER Maxence
+        marker.bindPopup(addr+"<button onclick='multipleModifyFuns();'>Modify</button>"); // Modify by DECANTER Maxence
     }else{
         var geocoder = new google.maps.Geocoder();																				//
 		var latlng = new google.maps.LatLng(lat, lng);																			//
@@ -796,7 +796,7 @@ function canPutMarker(lat, lng){
 	return aux;
 }
 
-/****************** Function add by HONGYU Zhao *****************/
+/****************** Function add by Hongyu Zhao *****************/
 
 //Showing each icon's content
 function openIcon(evt, iconName) {
@@ -812,32 +812,53 @@ function openIcon(evt, iconName) {
     document.getElementById(iconName).style.display = "block";
     evt.currentTarget.className += "active";
 }
-//Open time tab
-function infoDate(){
-	this.actualTime = 0;
-    var info_date = document.getElementById("info-date");
-    if(info_date.style.display === 'none') {
-        info_date.style.display = 'block';
-    } else {
-        info_date.style.display = 'none';
-    }
+// //Open & close time tab
+function openInfoDate(){
+	$("#info-date").show();
 }
-function problemDate() {
-    var problem_date = document.getElementById("problem-date");
-    if(problem_date.style.display === 'none') {
-        problem_date.style.display = 'block';
-    } else {
-        problem_date.style.display = 'none';
-    }
+function closeInfoDate(){
+    $("#info-date").hide();
 }
-function eventDate() {
-    var event_date = document.getElementById("event-date");
-    if(event_date.style.display === 'none') {
-        event_date.style.display = 'block';
-    } else {
-        event_date.style.display = 'none';
-    }
+function multipleCloseInfoDateFuncs() {
+    putActualTime();
+    closeInfoDate();
 }
+function openEventDate(){
+    $("#event-date").show();
+}
+function closeEventDate(){
+    $("#event-date").hide();
+}
+function multipleCloseEventDateFuncs() {
+    putActualTime();
+    closeEventDate();
+}
+function openProblemDate(){
+    $("#problem-date").show();
+}
+function closeProblemDate(){
+    $("#problem-date").hide();
+}
+function multipleCloseProblemDateFuncs() {
+    putActualTime();
+    closeProblemDate();
+}
+// function problemDate() {
+//     var problem_date = document.getElementById("problem-date");
+//     if(problem_date.style.display === 'none') {
+//         problem_date.style.display = 'block';
+//     } else {
+//         problem_date.style.display = 'none';
+//     }
+// }
+// function eventDate() {
+//     var event_date = document.getElementById("event-date");
+//     if(event_date.style.display === 'none') {
+//         event_date.style.display = 'block';
+//     } else {
+//         event_date.style.display = 'none';
+//     }
+// }
 function tootips() {
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -872,4 +893,13 @@ function CbtnProblem(){
 }
 function cancelProblem() {
     $("#mode-problem").hide();
+}
+
+function showModifyPage() {
+    $("#modifyPage").show();
+    $("#comment-page").hide();
+}
+function multipleModifyFuns() {
+    previewComment();
+    showModifyPage();
 }
