@@ -231,7 +231,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 	var latlng = L.latLng(lat, lng);
 	tab_markers.push([marker,title, iconChosen, d_start, description]);    // Modify by DECANTER Maxence
     if(addr != undefined){
-        marker.bindPopup(addr+"<button onclick='multipleModifyFuns();'>Modify</button>"); // Modify by DECANTER Maxence
+        marker.bindPopup(addr+"<input type='button' class='btn btn-success' onclick='multipleModifyFuns();'>Modify</input>"); // Modify by DECANTER Maxence
     }else{
         var geocoder = new google.maps.Geocoder();																				//
 		var latlng = new google.maps.LatLng(lat, lng);																			//
@@ -902,4 +902,26 @@ function showModifyPage() {
 function multipleModifyFuns() {
     previewComment();
     showModifyPage();
+}
+
+//Modify page
+	//open comments list
+function openCommentList() {
+	$("#commentsList").show();
+}
+	//Switch comment contents
+function openComment1() {
+    $("#comment-1").show();
+    $("#comment-2").hide();
+    $("#comment-3").hide();
+}
+function openComment2() {
+    $("#comment-2").show();
+    $("#comment-1").hide();
+    $("#comment-3").hide();
+}
+function openComment3() {
+    $("#comment-3").show();
+    $("#comment-1").hide();
+    $("#comment-2").hide();
 }

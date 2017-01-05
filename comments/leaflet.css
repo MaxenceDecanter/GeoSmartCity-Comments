@@ -217,16 +217,16 @@ ul > li {
 	/*background: url(images/problem.png) no-repeat;*/
 	background-size: 100%;
 }
-#viewAll >div{
-	height: 3vw;
-	width: 3vw;
-	vertical-align: middle;
-	top: 3px;
-	border-radius: 50%;
-	border: 1px solid white;
-	text-align: center;
-	padding: 50%;
-}
+/*#viewAll >div{*/
+	/*height: 3vw;*/
+	/*width: 3vw;*/
+	/*vertical-align: middle;*/
+	/*top: 3px;*/
+	/*border-radius: 50%;*/
+	/*border: 1px solid white;*/
+	/*text-align: center;*/
+	/*padding: 50%;*/
+/*}*/
 
 #mode-info,
 #mode-event,
@@ -268,6 +268,7 @@ ul > li {
 .date-tab{
 	display: none;
 }
+/*Modify page*/
 #modifyPage{
 	height: auto;
 	z-index:1;
@@ -284,4 +285,105 @@ ul > li {
 	background-color: #8ae600;
 	text-align: center;
 	overflow: hidden;
+}
+#modifyPage-header{
+	display: inline;
+	border-bottom: 1px solid white;
+}
+#backToComment{
+	display: inline;
+	float: right;
+}
+#backToCommentpic{
+	height: 20px;
+	width: 20px;
+	margin-left: 15px;
+	margin-bottom: -1.5vw;
+	border: 0px;
+}
+#commentsContainer{
+	height: auto;
+	width: 100%;
+	margin: 5px;
+	padding: 5px;
+}
+#commentsModeTitle,td{
+	border: 1px solid white;
+	color: black;
+}
+#commentsList{
+	display: none;
+}
+.commentsContent{
+	width: 100%;
+	height: 5vw;
+	border: 1px solid white;
+	margin: 8px 0;
+	overflow-y: scroll;
+	padding: 3px;
+	color: black;
+	display: none;
+
+}
+#arrowGroup{
+	margin: 5px 0;
+}
+#btnGroup > button{
+	margin-left: 5%;
+}
+.commentsNum{
+	margin-left: 5%;
+}
+/*TODO The media queries not complete for comment page, and and it into the modify page as well */
+/*Media queries*/
+@media only screen and (max-width:640px) {
+	#comment-page{
+		position: fixed;
+		top: 0;
+		left: 0;
+		border-radius: 0.78vw;
+		border-top: solid 1px lightgray;
+		border-left: solid 1px lightgray;
+		border-right: solid 1px lightgray;
+		width: 100vw;
+		background-color: #8ae600;
+		text-align: center;
+		overflow: hidden;
+	}
+
+	#infoPic {
+		height:3.5vw;
+		width:3.5vw;
+	}
+
+	#page-name{
+		display: inline-block;
+		text-align: center;
+		text-decoration: none;
+		font-size: 2.96vw;
+		font-family: sans-serif,Verdana ;
+		color:#395817;
+		padding-top: 0.5vh;
+		padding-bottom: 0.5vh;
+		font-weight: lighter;
+	}
+
+	#commentPic{
+		height:3.5vw;
+		width:3.5vw;
+	}
+
+	#modeList > li{
+		display: inline-block;
+		margin: 2.5vw;
+	}
+	#event,
+	#info,
+	#problem,
+	#other,
+	#viewAll{
+		height: 6.2vw;
+		width: 5.47vw;
+		background-size: 100%;
+	}
 }

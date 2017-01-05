@@ -23,9 +23,8 @@
 			<button class="btn btn-block" id="EN">EN</button>
 		
 		<div id="preview-comment"></div>
-        <div id="modifyPage">
-            modify page
-        </div>
+        <!--Include the modify page here-->
+        <?php include_once ('modify.php')?>
 <div id="mapid"></div>
 <div class="col-sm-12" id="comment-page">
     <div class="col-sm-12 comment-header">
@@ -45,20 +44,6 @@
             </a>
         </div>
     </div>
-    <!--Mode list box-->
-    <!--            <ul class="col-sm-12" id="modeList">-->
-    <!--                <li class="col-sm-2" id="event" data-toggle="tooltip" title="Event" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-event','event');" onmouseover="tootips()">-->
-    <!--                </li>-->
-    <!--                <li class="col-sm-2" id="info"  data-toggle="tooltip" title="Information" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-info','information');" onmouseover="tootips()">-->
-    <!--                </li>-->
-    <!--                <li class="col-sm-2" id="other" data-toggle="tooltip" title="Other" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-other','other')" onmouseover="tootips()">-->
-    <!--                </li>-->
-    <!--                <li class="col-sm-2" id="problem" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()">-->
-    <!--                </li>-->
-    <!--                <li class="col-sm-2" id="viewAll" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-viewAll','/')" onmouseover="tootips()">-->
-    <!--                    <div><span>V</span></div>-->
-    <!--                </li>-->
-    <!--            </ul>-->
     <ul class="col-sm-12" id="modeList">
         <li class="col-sm-3 icon" id="event">
             <img data-toggle="tooltip" title="Event" data-toggle="tooltip" data-placement="top" href="javascript:void(0)"  src="images/event.png" alt="/" onclick="selectIcon(event, 'mode-event','event');" onmouseover="tootips()">
