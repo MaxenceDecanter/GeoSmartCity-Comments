@@ -11,7 +11,6 @@ ul > li {
 	position: fixed;
 	z-index:0;
 }
-
 #map-form {
 	margin-left:0px;
 	z-index:2;
@@ -22,25 +21,16 @@ ul > li {
 	left: 10px;
 	top: 80%;
 }
-
 #map-form a:link{
     color: #ADD8E6;
     text-decoration: none;
 }
-
 #map-form a:visited{
     color: #f3f470;
 }
-
 #map-form a:hover{
     color: #ADD8E6;
     text-decoration: underline;
-}
-.languageBar {
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-	height: 20px;
 }
 #FI{
 	width: 50px;
@@ -70,11 +60,9 @@ ul > li {
 #FI:hover{
 	background-color: #4d4d4c;
 }
-
 #map-form a:active{
     color: #FFFFFF;
 }
-
 #comment-page {
 	height: auto;
 	z-index:2;
@@ -96,7 +84,6 @@ ul > li {
 	display: inline;
 	border-bottom: 1px solid white;
 }
-
 #page-name{
 	display: inline-block;
 	text-align: center;
@@ -126,10 +113,6 @@ ul > li {
 	margin-left: 15px;
 	margin-bottom: 2px;
 	border: 0px;
-}
-
-.redfamily {
-	color: red;
 }
 .search-box,.close-icon,.search-wrapper {
 	position: relative;
@@ -186,7 +169,6 @@ ul > li {
 	display: inline-block;
 	border-top: 1px solid cornsilk;
 	border-bottom: 1px solid cornsilk;
-
 }
 #modeList > li {
 	display: inline-block;
@@ -234,7 +216,6 @@ ul > li {
 	display: none;
 }
 #info:hover{
-	/*background-color: #4D4E53;*/
 	border-bottom:3px solid yellow;
 }
 #other:hover{
@@ -242,11 +223,11 @@ ul > li {
 }
 #event:hover{
 	border-bottom:3px solid green;
-	/*background-color: dimgrey;*/
 }
 #problem:hover{
 	border-bottom:3px solid red;
 }
+/*Address Bar*/
 #addr{
 	margin-bottom: 5px;
 }
@@ -352,12 +333,10 @@ ul > li {
 		text-align: center;
 		overflow: hidden;
 	}
-
 	#infoPic {
 		height:3.5vw;
 		width:3.5vw;
 	}
-
 	#page-name{
 		display: inline-block;
 		text-align: center;
@@ -369,7 +348,6 @@ ul > li {
 		padding-bottom: 0.5vh;
 		font-weight: lighter;
 	}
-
 	#commentPic{
 		height:3.5vw;
 		width:3.5vw;
