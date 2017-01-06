@@ -188,7 +188,6 @@ ul > li {
 	border-bottom: 1px solid cornsilk;
 
 }
-
 #modeList > li {
 	display: inline-block;
 	margin: 0.5vw 0.5vw 0.4vw 0.5vw;
@@ -196,27 +195,28 @@ ul > li {
 #event{
 	height: 3vw;
 	width: 3vw;
-	/*background: url(images/event.png) no-repeat;*/
+	background: url(images/event.png) no-repeat;
 	background-size: 100%;
 }
 #info{
 	height: 3vw;
 	width: 3vw;
-	/*background: url(images/info.png) no-repeat;*/
+	background: url(images/info.png) no-repeat;
 	background-size: 100%;
 }
 #other{
 	height: 3vw;
 	width: 3vw;
-	/*background: url(images/other.png) no-repeat;*/
+	background: url(images/other.png) no-repeat;
 	background-size: 100%;
 }
 #problem{
 	height: 3vw;
 	width: 3vw;
-	/*background: url(images/problem.png) no-repeat;*/
+	background: url(images/problem.png) no-repeat;
 	background-size: 100%;
 }
+/*TODO add the viewlAll Mode Icon stylesheet after get the icon*/
 /*#viewAll >div{*/
 	/*height: 3vw;*/
 	/*width: 3vw;*/
@@ -227,26 +227,29 @@ ul > li {
 	/*text-align: center;*/
 	/*padding: 50%;*/
 /*}*/
-
 #mode-info,
 #mode-event,
 #mode-problem,
 #mode-other{
 	display: none;
 }
-/*#info:hover{*/
-	/*border-bottom:3px solid yellow;*/
-/*}*/
-/*#other:hover{*/
-	/*border-bottom:3px solid blue;*/
-/*}*/
-/*#event:hover{*/
-	/*border-bottom:3px solid green;*/
-/*}*/
-/*#problem:hover{*/
-	/*border-bottom:3px solid red;*/
-/*}*/
-
+#info:hover{
+	/*background-color: #4D4E53;*/
+	border-bottom:3px solid yellow;
+}
+#other:hover{
+	border-bottom:3px solid blue;
+}
+#event:hover{
+	border-bottom:3px solid green;
+	/*background-color: dimgrey;*/
+}
+#problem:hover{
+	border-bottom:3px solid red;
+}
+#addr{
+	margin-bottom: 5px;
+}
 /*Hide mode tabs before the each icons are clicked*/
 #mode-other,
 #mode-event,
@@ -323,7 +326,6 @@ ul > li {
 	padding: 3px;
 	color: black;
 	display: none;
-
 }
 #arrowGroup{
 	margin: 5px 0;
