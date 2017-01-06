@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8"/>
-		<title>GeosmartCity Comments</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" href="leaflet.css"/>
-        <!--Loading bootstrap.css-->
-        <link rel="stylesheet" href="doc/styles/bootstrap.css">
-		<!-- Loading JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-        <!-- Load Leaflet from CDN-->
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
-        <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
-		<!-- Load Google Geocoder-->
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBXIxKmHz3QFTynyL8AMUBqQNxgS2sy8d8"></script>
-		
-	</head>
-	<body>
+<?php include 'header.php';?>
 <!--    language btns-->
-			<button class="btn btn-block" id="FI">FI</button>
-			<button class="btn btn-block" id="EN">EN</button>
-		
-		<div id="preview-comment"></div>
-        <!--Include the modify page here-->
-        <?php include_once ('modify.php')?>
+<?php include 'widgets/languageButtom.php';?>
+<!--		<div id="preview-comment"></div>-->
+<!--Include the modify page here-->
+<?php include_once ('modify.php');?>
+<?php include_once ('editComment.php');?>
 <div id="mapid"></div>
 <div class="col-sm-12" id="comment-page">
     <div class="col-sm-12 comment-header">
@@ -53,7 +33,7 @@
             <div><span>V</span></div>
         </li>
     </ul>
-    <!--            address bar-->
+    <!--address bar-->
     <div class="col-sm-12">
         <input type="text" class="form-control" id="addr" placeholder="Address.." onKeyPress="if(event.keyCode == 13) addr_search();">
     </div>
@@ -157,9 +137,4 @@
     </div>
 
 </div>
-<!-- Loading local js -->
-			<script src="leaflet.js"></script>
-        <!--Loading bootstrap js-->
-        <script src="doc/scripts/bootstrap.js"></script>
-	</body>
-</html>
+<?php include 'footer.php';?>

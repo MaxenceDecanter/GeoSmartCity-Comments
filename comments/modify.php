@@ -19,7 +19,7 @@
                 </tr>
             </table>
             <button class="col-sm-12 btn btn-default" style="margin: 5px 0" onclick="openCommentList()">Show comments</button>
-            <div class="col-sm-12" id="commentsList">
+            <div class="col-sm-12 comments" id="commentsList">
 <!--                TODO import the 3 latest comments into here from the DB-->
                 <div class="col-sm-12 commentsContent" id="comment-1" style="display: block">
                     comentscomentscoments 1
@@ -30,6 +30,8 @@
                     comentscomentscoments1
                     comentscomentscoments1
                     comentscomentscoments1
+                    <!--TODO give the stylesheet for comment's date-->
+                    <div class="col-sm-12">Show the comment's date</div>
                 </div>
                 <div class="col-sm-12 commentsContent" id="comment-2">
                     comentscomentscoments2
@@ -40,6 +42,8 @@
                     comentscomentscoments2
                     comentscomentscoments2
                     comentscomentscoments2
+                    <!--TODO give the stylesheet for comment's date-->
+                    <div class="col-sm-12">Show the comment's date</div>
                 </div>
                 <div class="col-sm-12 commentsContent" id="comment-3">
                     comentscomentscoments3
@@ -50,19 +54,22 @@
                     comentscomentscoments3
                     comentscomentscoments3
                     comentscomentscoments3
+                    <!--TODO give the stylesheet for comment's date-->
+                    <div class="col-sm-12">Show the comment's date</div>
                 </div>
                 <div class="col-sm-12" id="arrowGroup">
-                    <button class="btn btn-default col-sm-3 commentsNum" onclick="openComment1()">1</button>
-                    <button class="btn btn-default col-sm-3 commentsNum" onclick="openComment2()">2</button>
-                    <button class="btn btn-default col-sm-3 commentsNum" onclick="openComment3()">3</button>
+                    <button class="btn btn-default col-sm-5 commentsNum" onclick="openComment1()" id="prev"><</button>
+                    <button class="btn btn-default col-sm-5 commentsNum" onclick="openComment2()"  id="next">> </button>
                 </div>
+                <br>
+
             </div>
         </div>
 
             <div class="col-sm-12" id="btnGroup">
-                <button class="btn btn-default col-sm-3">Edit</button>
-                <button class="btn btn-default col-sm-3">Delete</button>
-                <button class="btn btn-default col-sm-3">
+                <button class="btn btn-default col-sm-4" onclick="showEditPage();">Edit</button>
+                <button class="btn btn-default col-sm-4">Delete</button>
+                <button class="btn btn-default col-sm-4">
                     <a href="index.php" style="color: black">Cancel</a>
                 </button>
             </div>
