@@ -326,7 +326,7 @@ ul > li {
 }
 /*TODO The media queries not complete for comment page, and and it into the modify page as well */
 /*Media queries*/
-@media only screen and (max-width:1410px) {
+@media only screen and (max-width:800px) {
 	#comment-page{
 		position: fixed;
 		top: 0;
