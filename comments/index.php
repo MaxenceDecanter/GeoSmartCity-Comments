@@ -5,7 +5,10 @@
 <!--Include the modify page here-->
 <?php include_once ('modify.php');?>
 <?php include_once ('editComment.php');?>
-<div id="mapid"></div>
+<div id="mapid">
+    <!-- Empty div for the map-->
+</div>
+
 <div class="col-sm-12" id="comment-page">
     <div class="col-sm-12 comment-header">
         <!--info-->
@@ -24,17 +27,18 @@
             </a>
         </div>
     </div>
-    <ul class="col-sm-12" id="modeList">
-        <li class="col-sm-3 icon" id="event" data-toggle="tooltip" title="Event" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-event','event');" onmouseover="tootips()"><div></div></li>
-        <li class="col-sm-3 icon" id="info" data-toggle="tooltip" title="Information" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-info','information');" onmouseover="tootips()"><div></div></li>
-        <li class="col-sm-3 icon" id="other" data-toggle="tooltip" title="Other" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-other','other')" onmouseover="tootips()"></li>
-        <li class="col-sm-3 icon" id="problem" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()"></li>
-        <li class="col-sm-2" id="viewAll" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-viewAll','/')" onmouseover="tootips()">
-            <div><span>V</span></div>
-        </li>
-    </ul>
+    <div id="modeList">
+        <!--            <div><span>V</span></div>-->
+<!--        </li>-->
+        <div id="event" data-toggle="tooltip" title="Event" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-event','event');" onmouseover="tootips()"><div></div></div>
+        <div id="info" data-toggle="tooltip" title="Information" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-info','information');" onmouseover="tootips()"><div></div></div>
+        <div id="other" data-toggle="tooltip" title="Other" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-other','other')" onmouseover="tootips()"></div>
+        <div id="problem" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()"></div>
+<!--        <div id="viewAll" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-viewAll','/')" onmouseover="tootips()">-->
+        <div id="problem" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()"></div>
+    </div>
     <!--address bar-->
-    <div class="col-sm-12">
+    <div>
         <input type="text" class="form-control" id="addr" placeholder="Address.." onKeyPress="if(event.keyCode == 13) addr_search();">
     </div>
 

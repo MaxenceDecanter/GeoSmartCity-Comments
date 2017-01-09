@@ -64,22 +64,22 @@ ul > li {
     color: #FFFFFF;
 }
 #comment-page {
-	height: auto;
-	z-index:2;
+    width: 21.75vw;
+    z-index:2;
     color: white;
-	position:absolute;
-	padding: 10px;
-	left:0;
-	top: 0;
-	border-radius: 0.3125vw;
-	border-top: solid 1px lightgray;
-	border-left: solid 1px lightgray;
-	border-right: solid 1px lightgray;
-	width: 23.75vw;
-	background-color: #8ae600;
-	text-align: center;
-	overflow: hidden;
+    position:absolute;
+    padding: 5px;
+    left:0;
+    top: 0;
+    border-radius: 0.3125vw;
+    border-top: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
+    background-color: #8ae600;
+    text-align: center;
+    overflow: hidden;
 }
+
 .comment-header{
 	display: inline;
 	border-bottom: 1px solid white;
@@ -106,7 +106,7 @@ ul > li {
 	margin-bottom: 2px;
 	border: 0px;
 }
-
+/*Comment icon pic*/
 #commentPic{
 	height: 20px;
 	width: 20px;
@@ -167,12 +167,16 @@ ul > li {
 }
 #modeList{
 	display: inline-block;
-	border-top: 1px solid cornsilk;
-	border-bottom: 1px solid cornsilk;
+	/*border-bottom: 1px solid cornsilk;*/
+    height: 3vw;
 }
-#modeList > li {
-	display: inline-block;
-	margin: 0.5vw 0.5vw 0.4vw 0.5vw;
+/*#modeList > li {*/
+	/*display: inline-block;*/
+	/*margin: 0.5vw 0.5vw 0.4vw 0.5vw;*/
+/*}*/
+#modeList > div{
+    display: inline-block;
+    margin: 0.1vw 0.1vw 0.1vw 0.1vw;
 }
 #event{
 	height: 3vw;
@@ -254,18 +258,18 @@ ul > li {
 }
 /*Modify page*/
 #modifyPage{
-	height: auto;
-	z-index:1;
-	color: white;
-	position:absolute;
-	padding: 10px;
-	left:0;
-	top: 0;
-	border-radius: 0.3125vw;
-	border-top: solid 1px lightgray;
-	border-left: solid 1px lightgray;
-	border-right: solid 1px lightgray;
-	width: 23.75vw;
+    width: 21.75vw;
+    height: auto;
+    z-index:1;
+    color: white;
+    position:absolute;
+    padding: 10px;
+    left:0;
+    top: 0;
+    border-radius: 0.3125vw;
+    border-top: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
 	background-color: #8ae600;
 	text-align: center;
 	overflow: hidden;
@@ -322,7 +326,7 @@ ul > li {
 }
 /*TODO The media queries not complete for comment page, and and it into the modify page as well */
 /*Media queries*/
-@media only screen and (max-width:640px) {
+@media only screen and (max-width:1410px) {
 	#comment-page{
 		position: fixed;
 		top: 0;
@@ -336,37 +340,43 @@ ul > li {
 		text-align: center;
 		overflow: hidden;
 	}
+    /*TODO add the responsive shtyle sheet after get the icon pic 'routing'*/
 	#infoPic {
 		height:3.5vw;
 		width:3.5vw;
+        float: left;
+        margin: 0.5vw;
 	}
+    #commentPic{
+        height:2.5vw;
+        width:3.5vw;
+        float: right;
+    }
 	#page-name{
 		display: inline-block;
 		text-align: center;
 		text-decoration: none;
-		font-size: 2.96vw;
+		font-size: 3vw;
 		font-family: sans-serif,Verdana ;
 		color:#395817;
 		padding-top: 0.5vh;
 		padding-bottom: 0.5vh;
 		font-weight: lighter;
 	}
-	#commentPic{
-		height:3.5vw;
-		width:3.5vw;
-	}
-
-	#modeList > li{
+    #modeList{
+        margin-bottom: 0;
+    }
+	#modeList > div{
 		display: inline-block;
-		margin: 2.5vw;
+		margin: 2vw;
 	}
 	#event,
 	#info,
 	#problem,
 	#other,
 	#viewAll{
-		height: 6.2vw;
-		width: 5.47vw;
+		height: 8vw;
+		width: 8vw;
 		background-size: 100%;
 	}
 }
