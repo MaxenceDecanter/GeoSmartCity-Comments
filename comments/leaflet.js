@@ -909,6 +909,7 @@ function multipleModifyFuns() {
 function openCommentList() {
     $("#commentContentTab").show();
     $("#btnGroup").show();
+    $("#arrowGroup").show();
 }
 //Edit comments part
 function showEditPage() {

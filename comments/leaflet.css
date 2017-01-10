@@ -311,26 +311,24 @@ button > p{
 
 }
 #commentContentTab,
+#arrowGroup,
 #btnGroup{
     display: none;
 }
 #prev{
-    border-right: 3px solid white;
-    font-weight: 200;
-    font-size: 3vw;
+    font-weight: bold;
     cursor: pointer;
+    margin-right: 40%;
 }
 #next{
-    border-left: 3px solid white;
-    font-weight: 200;
-    font-size: 3vw;
+    font-weight: bold;
     cursor: pointer;
+    margin-left: 40%;
 }
 #comment{
-    font-weight: bold;
-    text-align: left;
-    overflow-y: scroll;
-    height: 30px;
+    /*font-weight: bold;*/
+    /*text-align: left;*/
+    /*overflow-y: scroll;*/
 }
 #editComment > p,
 #deleteComment > p,

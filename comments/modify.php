@@ -25,14 +25,14 @@
                     <td class="col-sm-6" id="commentTitle">Title</td>
                     <td class="col-sm-3" id="commentContent" onclick="openCommentList();" style="cursor: pointer" data-toggle="tooltip" title="Click to view the comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">comment</td>
                 </tr>
+                <tr>
+                    <td colspan="3">
+                        <span id="prev" data-toggle="tooltip" title="Previous" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();"><</span>
+                        <span id="next" data-toggle="tooltip" title="Next" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">></span>
+                    </td>
+                </tr>
                 <tr id="commentContentTab">
-                    <td class="col-sm-3" id="prev">
-                        <span data-toggle="tooltip" title="Previous" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();"><</span>
-                    </td>
-                    <td class="col-sm-6" id="comment">Comment is showing here</td>
-                    <td class="col-sm-3" id="next">
-                        <span data-toggle="tooltip" title="Next" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">></span>
-                    </td>
+                    <td colspan="3" class="col-sm-12" id="comment">Comment is showing here</td>
                 </tr>
                 <tr id="btnGroup">
                     <td class="col-sm-4" id="editComment">
