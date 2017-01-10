@@ -32,7 +32,7 @@
         <div id="info" data-toggle="tooltip" title="Information" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-info','information');" onmouseover="tootips()"><div></div></div>
         <div id="other" data-toggle="tooltip" title="Other" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-other','other')" onmouseover="tootips()"></div>
         <div id="problem" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()"></div>
-        <div id="problem" data-toggle="tooltip" title="View All" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()"></div>
+        <div id="problem" data-toggle="tooltip" title="View All" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','viewall')" onmouseover="tootips()"></div>
     </div>
     <!--address bar-->
     <div>
@@ -74,8 +74,8 @@
         <input type="text" class="form-control" name="title" placeholder="Title..">
         <textarea name="commentsForInfoMode" cols="30" rows="5" class="form-control" placeholder="Comments.."></textarea>
         <div class="col-sm-12">
-            <button class="btn btn-default col-sm-6" onclick="multipleCloseEventDateFuncs()">Now</button>
-            <button class="btn btn-default col-sm-6" onclick="openEventDate()">Choose Date</button>
+            <button class="btn btn-default col-sm-6" onclick="multipleCloseInfoDateFuncs()">Now</button>
+            <button class="btn btn-default col-sm-6" onclick="openInfoDate()">Choose Date</button>
         </div>
         <!--choose time tab-->
         <div class="col-sm-12 date-tab" id="info-date">
@@ -114,8 +114,8 @@
         <input type="text" class="form-control" id="title" placeholder="Title..">
         <textarea name="commentsForInfoMode" cols="30" rows="5" class="form-control" placeholder="Comments.."></textarea>
         <div class="col-sm-12">
-            <button class="btn btn-default col-sm-6" onclick="multipleCloseEventDateFuncs()">Now</button>
-            <button class="btn btn-default col-sm-6" onclick="openEventDate()">Choose Date</button>
+            <button class="btn btn-default col-sm-6" onclick="multipleCloseProblemDateFuncs()">Now</button>
+            <button class="btn btn-default col-sm-6" onclick="openProblemDate()">Choose Date</button>
         </div>
         <!--choose date tab-->
         <div class="col-sm-12 date-tab" id="problem-date">

@@ -307,7 +307,7 @@ function displayServerComments(){
                 }
                 else{
 					if(obj.visible == "1"){        // Add by DECANTER Maxence
-						updateMarkerDatabase();
+						//updateMarkerDatabase();
 						coord = obj.position.geometry.coordinates;
 						lat = coord[0];
 						lon = coord[1];
@@ -371,17 +371,17 @@ function createComment(){
 	f = document.getElementsByClassName('iconContent');
 	
 	if(typeComment == 'information'){
+		title= $(".form-control:eq(6)").val();
+		description = $(".form-control:eq(7)").val();
+		d = $(".form-control:eq(8)").val();
+		start_time = $(".form-control:eq(9)").val();
+		end_time = $(".form-control:eq(10)").val();
+	}else if(typeComment == 'event'){
 		title= $(".form-control:eq(1)").val();
 		description = $(".form-control:eq(2)").val();
 		d = $(".form-control:eq(3)").val();
 		start_time = $(".form-control:eq(4)").val();
 		end_time = $(".form-control:eq(5)").val();
-	}else if(typeComment == 'event'){
-		title= $(".form-control:eq(8)").val();
-		description = $(".form-control:eq(9)").val();
-		d = $(".form-control:eq(10)").val();
-		start_time = $(".form-control:eq(11)").val();
-		end_time = $(".form-control:eq(12)").val();
 	}else if(typeComment == 'problem'){
 		title= $(".form-control:eq(13)").val();
 		description = $(".form-control:eq(14)").val();
@@ -389,8 +389,8 @@ function createComment(){
 		start_time = $(".form-control:eq(16)").val();
 		end_time = $(".form-control:eq(17)").val();
 	}else if(typeComment == 'other'){
-		title= $(".form-control:eq(6)").val();
-		description = $(".form-control:eq(7)").val();
+		title= $(".form-control:eq(11)").val();
+		description = $(".form-control:eq(12)").val();
 		
 	}
 	
@@ -708,7 +708,10 @@ function selectIcon(evt, iconName, type){
 	markersArray.clearLayers();
 	if(tmpMarker != "t")
 		tmpMarker.addTo(mymap);
-	displayServerCommentsByCategory(type);
+	if(type == 'viewall')
+		displayServerComments();
+	else
+		displayServerCommentsByCategory(type);
 	change_icon(capitalize(type));
 }
 
