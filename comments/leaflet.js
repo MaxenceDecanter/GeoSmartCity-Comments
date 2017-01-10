@@ -907,51 +907,9 @@ function multipleModifyFuns() {
 //Modify page
 	//open comments list
 function openCommentList() {
-    $("#commentsList").show();
+    $("#commentContentTab").show();
+    $("#btnGroup").show();
 }
-//TODO comments slider doesn't work
-//slide comments
-// var slideIndex = 1;
-// showSlides(slideIndex);
-//
-// function plusSlides(n) {
-//     showSlides(slideIndex += n);
-// }
-//
-// function currentSlide(n) {
-//     showSlides(slideIndex = n);
-// }
-//
-// function showSlides(n) {
-//     var i;
-//     var slides = document.getElementsByClassName("comments");
-//     var dots = document.getElementsByClassName("dot");
-//     if (n > slides.length) {slideIndex = 1}
-//     if (n < 1) {slideIndex = slides.length}
-//     for (i = 0; i < slides.length; i++) {
-//         slides[i].style.display = "none";
-//     }
-//     for (i = 0; i < dots.length; i++) {
-//         dots[i].className = dots[i].className.replace(" active", "");
-//     }
-//     slides[slideIndex-1].style.display = "block";
-// }
-function openComment1() {
-    $("#comment-1").show();
-    $("#comment-2").hide();
-    $("#comment-3").hide();
-}
-function openComment2() {
-    $("#comment-2").show();
-    $("#comment-1").hide();
-    $("#comment-3").hide();
-}
-function openComment3() {
-    $("#comment-3").show();
-    $("#comment-1").hide();
-    $("#comment-2").hide();
-}
-
 //Edit comments part
 function showEditPage() {
     $("#editPage").show();

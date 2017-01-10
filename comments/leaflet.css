@@ -88,7 +88,6 @@ button > p{
 .comment-header{
     width: 23.75vw;
 	display: inline;
-	/*border-bottom: 1px solid white;*/
 }
 #page-name{
 	display: inline-block;
@@ -172,6 +171,7 @@ button > p{
 #modeList{
 	display: inline-block;
     height: 3vw;
+    border-top: 1px solid white;
 }
 #modeList > div{
     display: inline-block;
@@ -258,48 +258,33 @@ button > p{
 /*Modify page*/
 #modifyPage{
     width: 23.75vw;
-    height: auto;
     z-index:1;
     color: white;
     position:absolute;
-    padding: 10px;
+    padding: 5px;
     left:0;
     top: 0;
     border-radius: 0.3125vw;
     border-top: solid 1px lightgray;
     border-left: solid 1px lightgray;
     border-right: solid 1px lightgray;
-	background-color: #8ae600;
-	text-align: center;
-	overflow: hidden;
+    background-color: #8ae600;
+    text-align: center;
+    overflow: hidden;
 }
 #modifyPage-header{
 	display: inline;
-	border-bottom: 1px solid white;
-}
-#backToComment{
-	display: inline;
-	float: right;
-}
-#backToCommentpic{
-	height: 20px;
-	width: 20px;
-	margin-left: 15px;
-	margin-bottom: -1.5vw;
-	border: 0px;
 }
 #commentsContainer{
 	height: auto;
 	width: 100%;
-	margin: 5px;
+	/*margin: 5px;*/
 	padding: 5px;
 }
 #commentsModeTitle,td{
-	border: 1px solid white;
 	color: black;
-}
-#commentsList{
-	display: none;
+    border-bottom: 3px solid white;
+    border-top: 3px solid white;
 }
 .commentsContent{
 	width: 100%;
@@ -310,15 +295,50 @@ button > p{
 	padding: 3px;
 	color: black;
 	display: none;
+    text-align: left;
+}
+#commentMode,
+#commentTitle,
+#editComment,
+#deleteComment{
+    border-right: 3px solid white;
+}
+#commentContent,
+#commentMode,
+#commentTitle{
+    text-align: center;
+    font-weight: bold;
+
+}
+#commentContentTab,
+#btnGroup{
+    display: none;
 }
 #prev{
-	float: left;
+    border-right: 3px solid white;
+    font-weight: 200;
+    font-size: 3vw;
+    cursor: pointer;
 }
 #next{
-    float: right;
+    border-left: 3px solid white;
+    font-weight: 200;
+    font-size: 3vw;
+    cursor: pointer;
 }
-#btnGroup > button{
-
+#comment{
+    font-weight: bold;
+    text-align: left;
+    overflow-y: scroll;
+    height: 30px;
+}
+#editComment > p,
+#deleteComment > p,
+#cancelComment > p{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 2px;
+    margin-top: 8px;
 }
 .commentsNum{
 	/*margin-left: 5%;*/
