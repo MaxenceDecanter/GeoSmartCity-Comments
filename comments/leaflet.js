@@ -58,7 +58,6 @@ function onMapClick(e) {
 	//$('.iconContent').show();
 	//$('#add-comment').show("slow");
     //$('#modify-comment').hide("slow");		
-	
 }
 
 /**
@@ -101,8 +100,8 @@ function onMarkerClick(e){
 		//mymap.removeLayer(marker);
 		selectedMarker.getPopup().togglePopup();
 		lat = e.target._latlng.lat;
-		lng = e.target._latlng.lng;
-		
+		lng = e.target._latlng.lng;										 
+		$(".form-control:eq(0)").val(getFormattedAddr(selectedMarker.getPopup().getContent()));			 // Add by DECANTER Maxence
 	}
 	
 	//console.log(lat, lng);
@@ -230,7 +229,8 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
     }
 	var latlng = L.latLng(lat, lng);
 	tab_markers.push([marker,title, iconChosen, d_start, description]);    // Modify by DECANTER Maxence
-    if(addr != undefined){
+    console.log(tab_markers[0][0]);
+	if(addr != undefined){
         marker.bindPopup(addr+"<input type='button' class='btn btn-success' onclick='multipleModifyFuns();'>Modify</input>"); // Modify by DECANTER Maxence
     }else{
         var geocoder = new google.maps.Geocoder();																				//
@@ -644,7 +644,7 @@ function displayServerCommentsByCategory(cat){
 }
 
 /**
-*	Compare two date (-1 if date1 older, 1 if date2 older, 0 if same date)
+*	Compare two date (2 if date1 older, 1 if date2 older, 0 if same date)
 *
 *	Add by DECANTER Maxence
 *
@@ -654,31 +654,32 @@ function displayServerCommentsByCategory(cat){
 function compareDate(date1, date2){
 	//Compare year
 	if(date1.substring(0,4) < date2.substring(0,4))
-		return -1;
+		return 2;
 	else if(date1.substring(0,4) > date2.substring(0,4))
 		return 1;
 	else if(date1.substring(0,4) == date2.substring(0,4)){
 		//Compare month
 		if(date1.substring(5,7) < date2.substring(5,7))
-			return -1;
+			return 2;
 		else if(date1.substring(5,7) > date2.substring(5,7))
 			return 1;
 		else if(date1.substring(5,7) == date2.substring(5,7)){
 			//Compare day
+			console.log(date1 , date2);
 			if(date1.substring(8,10) < date2.substring(8,10))
-				return -1;
+				return 2;
 			else if(date1.substring(8,10) > date2.substring(8,10))
 				return 1;
 			else if(date1.substring(8,10) == date2.substring(8,10)){
 				//Compare hours
 				if(date1.substring(11,13) < date2.substring(11,13))
-					return -1;
+					return 2;
 				else if(date1.substring(11,13) > date2.substring(11,13))
 					return 1;
 				else if(date1.substring(11,13) == date2.substring(11,13)){
 					//Compare minutes
 					if(date1.substring(14,16) < date2.substring(14,16))
-						return -1;
+						return 2;
 					if(date1.substring(14,16) > date2.substring(14,16))
 						return 1;
 					if(date1.substring(14,16) == date2.substring(14,16))
@@ -777,6 +778,55 @@ function stat(){
 	
     xhttp.open("GET", 'http://localhost/comments/baguette/marker.php', true);
     xhttp.send();
+}
+
+/**
+*	Return the address without modify button htlm code
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} content
+*/
+function getFormattedAddr(content){
+	var aux ='';								 
+	var i =0;									
+	while (content.substring(i, i+1) != '<'){		 
+		aux += content.substring(i, i+1);			 
+		i++;									 
+	}	
+	return aux;
+}
+
+function getThreeLastComments(addr){
+	var tab_sameAddr = [];
+	for (var i = 0 ; i < tab_markers.length; i++){
+		if(getAddrWithoutNumber(addr) == getAddrWithoutNumber(getFormattedAddr(tab_markers[i][0].getPopup().getContent()))){
+			tab_sameAddr.push(tab_markers[i]);
+		}
+	} 
+	if(tab_sameAddr.length > 3){
+		tab_sameAddr = tab_sameAddr.slice(0,3);
+	}
+	return tab_sameAddr;
+}
+
+function getAddrWithoutNumber(addr){
+	var aux = '';
+	var i =0;
+	while(addr.substring(i,i+1) != ','){
+		if(isNaN(addr.substring(i,i+1))){
+			if(!isNaN(addr.substring(i-1,i)) && addr.substring(i+1,i+2) == ','){
+			aux += '';
+			}else{
+			aux += addr.substring(i,i+1);
+			}
+		}
+		i++;
+	}
+	for(i; i<addr.length;i++){
+		aux += addr.substring(i,i+1);
+	}
+	return aux;
 }
 
 /**

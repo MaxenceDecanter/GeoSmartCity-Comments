@@ -11,7 +11,7 @@ class MarkerTable
     public static function getAllMarkers() {
 
         $markers = array();
-        foreach(Database::fetchAll("SELECT m.mid, m.name, m.d_start, m.d_end, m.position, m.description, c.name as category, m.visible FROM marker as m, category as c where m.category=c.cid") as $marker)
+        foreach(Database::fetchAll("SELECT m.mid, m.name, m.d_start, m.d_end, m.position, m.description, c.name as category, m.visible FROM marker as m, category as c where m.category=c.cid ORDER BY m.d_start DESC") as $marker) // Modify by DECANTER Maxence
         {
             $pos=unserialize($marker["position"]);
             $tmp = new MarkerModel($marker["mid"], $marker["name"], $marker["d_start"],$marker["d_end"] , $pos, $marker["description"],$marker["category"],$marker["visible"]);
