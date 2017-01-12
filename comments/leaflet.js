@@ -797,6 +797,13 @@ function getFormattedAddr(content){
 	return aux;
 }
 
+/**
+*	Return the three last comment in the same street that addr
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} addr
+*/
 function getThreeLastComments(addr){
 	var tab_sameAddr = [];
 	for (var i = 0 ; i < tab_markers.length; i++){
@@ -810,6 +817,13 @@ function getThreeLastComments(addr){
 	return tab_sameAddr;
 }
 
+/**
+*	Return the address without the number, only the street, the postal code, the city and the country
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} addr
+*/
 function getAddrWithoutNumber(addr){
 	var aux = '';
 	var i =0;
@@ -829,8 +843,74 @@ function getAddrWithoutNumber(addr){
 	return aux;
 }
 
+var tab_modify;
+var commentNbr;
+
 /**
-*	Check if thereis no comment on the same coordinates
+*	Load the tab with the 3 last comments of the street selected
+*
+*	Add by DECANTER Maxence
+*
+*/
+function loadTabModifyComment(){
+	tab_modify = [];
+	commentNbr = 0;
+	tab_modify = getThreeLastComments($(".form-control:eq(0)").val());
+}
+
+/**
+*	Display the next comment in the modify page
+*
+*	Add by DECANTER Maxence
+*
+*/
+function nextComment(){
+	if(commentNbr === 0)
+		displayModifyComment(1);
+	if(commentNbr === 1)
+		displayModifyComment(2);
+	if(commentNbr === 2)
+		console.log("It's the last comment");
+}
+
+/**
+*	Display the previous comment in the modify page
+*
+*	Add by DECANTER Maxence
+*
+*/
+function previousComment(){
+	if(commentNbr === 2)
+		displayModifyComment(1);
+	if(commentNbr === 1)
+		displayModifyComment(0);
+	if(commentNbr === 0)
+		console.log("It's the last comment");
+}
+
+/**
+*	Insert the HTML code in the right div to display the comment
+*
+*	Add by DECANTER Maxence
+*
+*	@param (int) i
+*/
+function displayModifyComment(i){
+	var b = $('#commentMode');
+	b.empty();
+	b.append('<p>'+tab_modify[i][2]+'</p>')
+	var c = $('#commentTitle');
+	c.empty();
+	c.append('<p>'+tab_modify[i][1]+'</p>')
+	var d = $('#comment');
+	d.empty();
+	d.append('<p>'+tab_modify[i][4]+'</p>');
+	d.append('<p><strong>Created on: </strong>'+tab_modify[i][3]+'</p>');
+	commentNbr = i;
+}
+
+/**
+*	Check if there is no comment on the same coordinates
 *
 *	Add by DECANTER Maxence
 *
@@ -878,6 +958,7 @@ function multipleCloseInfoDateFuncs() {
 }
 function openEventDate(){
     $("#event-date").show();
+	getThreeLastComments("Maariankatu 14, 20100 Turku, Finlande");
 }
 function closeEventDate(){
     $("#event-date").hide();
@@ -955,6 +1036,8 @@ function showModifyPage() {
 function multipleModifyFuns() {
     previewComment();
     showModifyPage();
+	loadTabModifyComment();
+	displayModifyComment(0);
 }
 
 //Modify page
@@ -963,6 +1046,7 @@ function openCommentList() {
     $("#commentContentTab").show();
     $("#btnGroup").show();
     $("#arrowGroup").show();
+	
 }
 //Edit comments part
 function showEditPage() {

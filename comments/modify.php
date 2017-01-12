@@ -27,8 +27,8 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <span id="prev" data-toggle="tooltip" title="Previous" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();"><</span>
-                        <span id="next" data-toggle="tooltip" title="Next" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">></span>
+                        <span id="prev" data-toggle="tooltip" title="Previous" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();" onclick="previousComment();"></span>
+                        <span id="next" data-toggle="tooltip" title="Next" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();" onclick="nextComment();"></span>
                     </td>
                 </tr>
                 <tr id="commentContentTab">
