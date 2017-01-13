@@ -1,4 +1,4 @@
-body{
+ordebody{
 	margin:0;
 	padding:0;
     font-size: 100%;
@@ -278,7 +278,6 @@ button > p{
 #commentsContainer{
 	height: auto;
 	width: 100%;
-	/*margin: 5px;*/
 	padding: 5px;
 }
 #commentsModeTitle,td{
@@ -315,15 +314,26 @@ button > p{
 #btnGroup{
     display: none;
 }
+#btnGroup > td > p{
+	cursor: pointer;
+}
+#commentContentTab{
+	height: 350px;
+	border-left: 2px solid white;
+	border-right: 2px solid white;
+	text-align: left;
+}
 #prev{
     font-weight: bold;
     cursor: pointer;
     margin-right: 40%;
+	font-size: 1.8rem;
 }
 #next{
     font-weight: bold;
     cursor: pointer;
     margin-left: 40%;
+	font-size: 1.8rem;
 }
 #comment{
     /*font-weight: bold;*/
