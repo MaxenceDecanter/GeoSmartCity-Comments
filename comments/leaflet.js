@@ -856,6 +856,7 @@ function loadTabModifyComment(){
 	tab_modify = [];
 	commentNbr = 0;
 	tab_modify = getThreeLastComments($(".form-control:eq(0)").val());
+	console.log(tab_modify);
 }
 
 /**
@@ -867,9 +868,9 @@ function loadTabModifyComment(){
 function nextComment(){
 	if(commentNbr === 0)
 		displayModifyComment(1);
-	if(commentNbr === 1)
+	else if(commentNbr === 1)
 		displayModifyComment(2);
-	if(commentNbr === 2)
+	else if(commentNbr === 2)
 		console.log("It's the last comment");
 }
 
@@ -882,10 +883,10 @@ function nextComment(){
 function previousComment(){
 	if(commentNbr === 2)
 		displayModifyComment(1);
-	if(commentNbr === 1)
+	else if(commentNbr === 1)
 		displayModifyComment(0);
-	if(commentNbr === 0)
-		console.log("It's the last comment");
+	else if(commentNbr === 0)
+		console.log("It's the first comment");
 }
 
 /**
@@ -898,15 +899,18 @@ function previousComment(){
 function displayModifyComment(i){
 	var b = $('#commentMode');
 	b.empty();
+	b.append('<h5>Mode</h5>')
 	b.append('<p>'+tab_modify[i][2]+'</p>')
 	var c = $('#commentTitle');
 	c.empty();
+	c.append('<h5>Title</h5>')
 	c.append('<p>'+tab_modify[i][1]+'</p>')
 	var d = $('#comment');
 	d.empty();
 	d.append('<p>'+tab_modify[i][4]+'</p>');
-	d.append('<p><strong>Created on: </strong>'+tab_modify[i][3]+'</p>');
+	d.append('<p>Created on: '+tab_modify[i][3]+'</p>');
 	commentNbr = i;
+	console.log(commentNbr);
 }
 
 /**
@@ -958,7 +962,6 @@ function multipleCloseInfoDateFuncs() {
 }
 function openEventDate(){
     $("#event-date").show();
-	getThreeLastComments("Maariankatu 14, 20100 Turku, Finlande");
 }
 function closeEventDate(){
     $("#event-date").hide();

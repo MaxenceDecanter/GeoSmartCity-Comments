@@ -32,6 +32,12 @@
                         <div id="comment">sssss</div>
                     </td>
                 </tr>
+				<tr id="btnChange">
+					<td class="col-sm-3" id="previousComment" onclick="previousComment();"
+                        style="cursor: pointer" data-toggle="tooltip" title="Click to view the previous comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">Previous</td>
+					<td class="col-sm-3" id="nextComment" onclick="nextComment();"
+                        style="cursor: pointer" data-toggle="tooltip" title="Click to view the next comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">Next</td>
+				</tr>
                 <tr id="btnGroup">
                     <td class="col-sm-4" id="editComment">
                         <p data-toggle="tooltip" title="Edit this comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">Edit</p>
