@@ -20,22 +20,16 @@
     </div>
     <div class="col-sm-12" id="modifyPage-body">
         <div class="col-sm-12" id="commentsContainer">
-            <table class="col-sm-12" id="commentsModeTitle">
+            <table class="table" id="commentsModeTitle">
                 <tr>
                     <td class="col-sm-3" id="commentMode">Mode</td>
                     <td class="col-sm-6" id="commentTitle">Title</td>
                     <td class="col-sm-3" id="commentContent" onclick="openCommentList();"
                         style="cursor: pointer" data-toggle="tooltip" title="Click to view the comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">comment</td>
                 </tr>
-                <tr>
-                    <td colspan="3">
-                        <span id="prev" data-toggle="tooltip" title="Previous" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();" onclick="previousComment();">&#8592;</span>
-                        <span id="next" data-toggle="tooltip" title="Next" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();" onclick="nextComment();">&#8594;</span>
-                    </td>
-                </tr>
                 <tr id="commentContentTab">
-                    <td colspan="3" class="col-sm-12" id="comment">
-                        <p></p>
+                    <td>
+                        <div id="comment">sssss</div>
                     </td>
                 </tr>
                 <tr id="btnGroup">

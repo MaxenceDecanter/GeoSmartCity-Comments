@@ -282,8 +282,8 @@ button > p{
 }
 #commentsModeTitle,td{
 	color: black;
-    border-bottom: 3px solid white;
-    border-top: 3px solid white;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
 }
 .commentsContent{
 	width: 100%;
@@ -300,13 +300,13 @@ button > p{
 #commentTitle,
 #editComment,
 #deleteComment{
-    border-right: 3px solid white;
+    border-right: 1px solid white;
 }
 #commentContent,
 #commentMode,
 #commentTitle{
+	font-size: .8rem;
     text-align: center;
-    font-weight: bold;
 
 }
 #commentContentTab,
@@ -319,25 +319,23 @@ button > p{
 }
 #commentContentTab{
 	height: 350px;
-	border-left: 2px solid white;
-	border-right: 2px solid white;
-	text-align: left;
 }
 #prev{
     font-weight: bold;
     cursor: pointer;
-    margin-right: 40%;
+    /*margin-right: 40%;*/
 	font-size: 1.8rem;
 }
 #next{
     font-weight: bold;
     cursor: pointer;
-    margin-left: 40%;
+    /*margin-left: 40%;*/
 	font-size: 1.8rem;
 }
 #comment{
-    /*font-weight: bold;*/
-    /*text-align: left;*/
+    font-weight: bold;
+    text-align: left;
+	padding-top: 0;
     /*overflow-y: scroll;*/
 }
 #editComment > p,
@@ -357,7 +355,8 @@ button > p{
     body{
         font-size: 0.1vw;
     }
-	#comment-page{
+	#comment-page,
+	#modifyPage{
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -405,6 +404,11 @@ button > p{
 		height: 8vw;
 		width: 8vw;
 		background-size: 100%;
+	}
+	#commentMode,
+	#commentTitle,
+	#commentContent{
+		font-size: 2rem;
 	}
 }
 
