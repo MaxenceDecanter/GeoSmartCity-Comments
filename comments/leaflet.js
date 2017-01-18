@@ -102,6 +102,8 @@ function onMarkerClick(e){
 		lat = e.target._latlng.lat;
 		lng = e.target._latlng.lng;										 
 		$(".form-control:eq(0)").val(getFormattedAddr(selectedMarker.getPopup().getContent()));			 // Add by DECANTER Maxence
+		previewComment(getFormattedAddr(selectedMarker.getPopup().getContent()));
+		$("#preview-comment").show();
 	}
 	
 	//console.log(lat, lng);
@@ -231,14 +233,14 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 	tab_markers.push([marker,title, iconChosen, d_start, description]);    // Modify by DECANTER Maxence
     console.log(tab_markers[0][0]);
 	if(addr != undefined){
-        marker.bindPopup(addr+"<input type='button' class='btn btn-success' onclick='multipleModifyFuns();'>Modify</input>"); // Modify by DECANTER Maxence
+        marker.bindPopup(addr+"<a href='#' onclick='multipleModifyFuns();'> <strong>View</strong></a>"); // Modify by DECANTER Maxence
     }else{
         var geocoder = new google.maps.Geocoder();																				//
 		var latlng = new google.maps.LatLng(lat, lng);																			//
 		geocoder.geocode({'latLng': latlng}, function(results, status) {														//
 		/* Si le géocodage inversé a réussi */																					// Add by DECANTER Maxence
 		if (status == google.maps.GeocoderStatus.OK) {																			//																		//
-			marker.bindPopup(results[0].formatted_address+"<button onclick='previewComment();'>Modify</button>").openPopup();	//
+			marker.bindPopup(results[0].formatted_address+"<a href='#' onclick='multipleModifyFuns();'> <strong>View</strong></a>").openPopup();	//
 			$(".form-control:eq(0)").val(results[0].formatted_address);															//
 		}																														//
 		});    
@@ -417,28 +419,21 @@ function createComment(){
 *
 *	Modify by DECANTER Maxence
 */
-function previewComment(){
-	$('#comment-page').hide();
-	$('#preview-comment').show();
-	var isFind = 0;
-	var i = 0;
-	while(isFind !=1){
-		console.log(tab_markers[i][0]._latlng);
-		if(selectedMarker === tab_markers[i][0]){
-			title = tab_markers[i][1];
-			type = tab_markers[i][2];
-			date = tab_markers[i][3];
-			description = tab_markers[i][4];
-			isFind = 1;
-		}
-		i++;
-	}
+function previewComment(addr){
+	console.log(addr);
+	tab = tab_markers;
 	var d = $('#preview-comment');
 	d.empty();
-	d.append('<p><strong>Title:</strong> '+title+'</p>');
-	d.append('<p><strong>Type:</strong> '+type+'</p>');
-	d.append('<p><strong>Created on:</strong> '+date+'</p>');
-	d.append('<p><strong>Description:</strong> '+description+'</p>');
+	for (var i = 0 ; i < tab_markers.length; i++){
+		if(addr == getFormattedAddr(tab[i][0].getPopup().getContent())){
+			console.log(tab[i]);
+			d.append('<p><strong>Title:</strong> '+tab[i][1]+'</p>');
+			d.append('<p><strong>Mode:</strong> '+tab[i][2]+'</p>');
+			d.append('<p><strong>Created on:</strong> '+tab[i][3]+'</p>');
+			d.append('<p><strong>Description:</strong> '+tab[i][4]+'</p>');
+			d.append('</br>');
+		}
+	} 
 	
     /*f = document.getElementById('add-comment-form');
     title= f['title'].value;
@@ -709,9 +704,11 @@ function selectIcon(evt, iconName, type){
 	markersArray.clearLayers();
 	if(tmpMarker != "t")
 		tmpMarker.addTo(mymap);
-	if(type == 'viewall')
+	if(type == 'viewall'){
 		displayServerComments();
-	else
+		stat();
+		$("#stat").show();
+	}else
 		displayServerCommentsByCategory(type);
 	change_icon(capitalize(type));
 }
@@ -751,6 +748,7 @@ function stat(){
             arrayComments.forEach(function(obj){
                 //console.log(obj);
                 if(!obj.position){
+					
                     console.log("Problem with this marker:");
                     console.log(obj);
                 }
@@ -798,7 +796,7 @@ function getFormattedAddr(content){
 }
 
 /**
-*	Return the three last comment in the same street that addr
+*	Return the three last comment in the same addr
 *
 *	Add by DECANTER Maxence
 *
@@ -807,13 +805,14 @@ function getFormattedAddr(content){
 function getThreeLastComments(addr){
 	var tab_sameAddr = [];
 	for (var i = 0 ; i < tab_markers.length; i++){
-		if(getAddrWithoutNumber(addr) == getAddrWithoutNumber(getFormattedAddr(tab_markers[i][0].getPopup().getContent()))){
+		if(addr == getFormattedAddr(tab_markers[i][0].getPopup().getContent())){
 			tab_sameAddr.push(tab_markers[i]);
 		}
 	} 
 	if(tab_sameAddr.length > 3){
 		tab_sameAddr = tab_sameAddr.slice(0,3);
 	}
+	
 	return tab_sameAddr;
 }
 
@@ -900,11 +899,11 @@ function displayModifyComment(i){
 	var b = $('#commentMode');
 	b.empty();
 	b.append('<h5>Mode</h5>')
-	b.append('<p>'+tab_modify[i][2]+'</p>')
+	b.append('<h5>'+tab_modify[i][2]+'</h5>')
 	var c = $('#commentTitle');
 	c.empty();
 	c.append('<h5>Title</h5>')
-	c.append('<p>'+tab_modify[i][1]+'</p>')
+	c.append('<h5>'+tab_modify[i][1]+'</h5>')
 	var d = $('#comment');
 	d.empty();
 	d.append('<p>'+tab_modify[i][4]+'</p>');
