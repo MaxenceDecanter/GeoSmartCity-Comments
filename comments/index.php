@@ -1,6 +1,7 @@
 <?php include 'header.php';?>
 <!--    language btns-->
 <?php include 'widgets/languageButtom.php';?>
+<!--		<div id="preview-comment"></div>-->
 <!--Include the modify page here-->
 <?php include_once ('modify.php');?>
 <?php include_once ('editComment.php');?>
@@ -139,7 +140,7 @@
         </div>
     </div>
 	
-	<div id="preview-comment"></div>
+	<div id="commentMainPage"></div>
 	
 	<div id="stat"></div>
 

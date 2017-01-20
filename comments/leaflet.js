@@ -102,8 +102,8 @@ function onMarkerClick(e){
 		lat = e.target._latlng.lat;
 		lng = e.target._latlng.lng;										 
 		$(".form-control:eq(0)").val(getFormattedAddr(selectedMarker.getPopup().getContent()));			 // Add by DECANTER Maxence
-		previewComment(getFormattedAddr(selectedMarker.getPopup().getContent()));
-		$("#preview-comment").show();
+		commentMainPage(getFormattedAddr(selectedMarker.getPopup().getContent()));
+		$("#commentMainPage").show();
 	}
 	
 	//console.log(lat, lng);
@@ -211,7 +211,7 @@ function modifyComment(bool){
 * @param {string} addr
 * @param {string} iconChosen
 */
-function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
+function addMarker(lat, lng, addr, iconChosen, title, d_start, description,id){
     var marker;
     switch(iconChosen) {
         case "Problem":
@@ -230,7 +230,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
             marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
     }
 	var latlng = L.latLng(lat, lng);
-	tab_markers.push([marker,title, iconChosen, d_start, description]);    // Modify by DECANTER Maxence
+	tab_markers.push([marker,title, iconChosen, d_start, description,id]);    // Modify by DECANTER Maxence
     console.log(tab_markers[0][0]);
 	if(addr != undefined){
         marker.bindPopup(addr+"<a href='#' onclick='multipleModifyFuns();'> <strong>View</strong></a>"); // Modify by DECANTER Maxence
@@ -240,7 +240,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description){
 		geocoder.geocode({'latLng': latlng}, function(results, status) {														//
 		/* Si le géocodage inversé a réussi */																					// Add by DECANTER Maxence
 		if (status == google.maps.GeocoderStatus.OK) {																			//																		//
-			marker.bindPopup(results[0].formatted_address+"<a href='#' onclick='multipleModifyFuns();'> <strong>View</strong></a>").openPopup();	//
+			marker.bindPopup(results[0].formatted_address+"<a href='#' onclick='previewComment();'> <strong>View</strong></a>").openPopup();	//
 			$(".form-control:eq(0)").val(results[0].formatted_address);															//
 		}																														//
 		});    
@@ -314,7 +314,7 @@ function displayServerComments(){
 						lat = coord[0];
 						lon = coord[1];
 						addr = obj.position.properties.name;
-						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description);
+						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description,obj.id);
 					}
                 }
             });
@@ -419,21 +419,28 @@ function createComment(){
 *
 *	Modify by DECANTER Maxence
 */
-function previewComment(addr){
-	console.log(addr);
-	tab = tab_markers;
+function previewComment(){
+	$('#comment-page').hide();
+	$('#preview-comment').show();
+	var isFind = 0;
+	var i = 0;
+	while(isFind !=1){
+		console.log(tab_markers[i][0]._latlng);
+		if(selectedMarker === tab_markers[i][0]){
+			title = tab_markers[i][1];
+			type = tab_markers[i][2];
+			date = tab_markers[i][3];
+			description = tab_markers[i][4];
+			isFind = 1;
+		}
+		i++;
+	}
 	var d = $('#preview-comment');
 	d.empty();
-	for (var i = 0 ; i < tab_markers.length; i++){
-		if(addr == getFormattedAddr(tab[i][0].getPopup().getContent())){
-			console.log(tab[i]);
-			d.append('<p><strong>Title:</strong> '+tab[i][1]+'</p>');
-			d.append('<p><strong>Mode:</strong> '+tab[i][2]+'</p>');
-			d.append('<p><strong>Created on:</strong> '+tab[i][3]+'</p>');
-			d.append('<p><strong>Description:</strong> '+tab[i][4]+'</p>');
-			d.append('</br>');
-		}
-	} 
+	d.append('<p><strong>Title:</strong> '+title+'</p>');
+	d.append('<p><strong>Type:</strong> '+type+'</p>');
+	d.append('<p><strong>Created on:</strong> '+date+'</p>');
+	d.append('<p><strong>Description:</strong> '+description+'</p>');
 	
     /*f = document.getElementById('add-comment-form');
     title= f['title'].value;
@@ -627,7 +634,7 @@ function displayServerCommentsByCategory(cat){
 							lat = coord[0];
 							lon = coord[1];
 							addr = obj.position.properties.name;
-						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description);
+						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description,obj.id);
 						}
 					}
                 }
@@ -725,6 +732,28 @@ function putActualTime(){
 	this.actualTime = 1;
 }
 
+/**
+*   Displays the comment on main page
+*
+*	Modify by DECANTER Maxence
+*/
+function commentMainPage(addr){
+	console.log(addr);
+	tab = tab_markers;
+	var d = $('#commentMainPage');
+	d.empty();
+	for (var i = 0 ; i < tab_markers.length; i++){
+		if(addr == getFormattedAddr(tab[i][0].getPopup().getContent())){
+			console.log(tab[i]);
+			d.append('<p><strong>Title:</strong> '+tab[i][1]+'</p>');
+			d.append('<p><strong>Mode:</strong> '+tab[i][2]+'</p>');
+			d.append('<p><strong>Created on:</strong> '+tab[i][3]+'</p>');
+			d.append('<p><strong>Description:</strong> '+tab[i][4]+'</p>');
+			d.append('</br>');
+		}
+	} 
+}
+
 
 /**
 *	Make statistics of number of comments in database and display in a div
@@ -748,7 +777,6 @@ function stat(){
             arrayComments.forEach(function(obj){
                 //console.log(obj);
                 if(!obj.position){
-					
                     console.log("Problem with this marker:");
                     console.log(obj);
                 }
@@ -812,7 +840,6 @@ function getThreeLastComments(addr){
 	if(tab_sameAddr.length > 3){
 		tab_sameAddr = tab_sameAddr.slice(0,3);
 	}
-	
 	return tab_sameAddr;
 }
 
@@ -930,6 +957,33 @@ function canPutMarker(lat, lng){
 	}
 	
 	return aux;
+}
+
+/**
+*	Modify the comment data in the database
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} if
+*	@param {string} category
+*/
+function putModifyComment(id, category){
+	f = document.getElementsByClassName('modifyContent');
+	
+	title= $(".form-control:eq(1)").val();
+	description = $(".form-control:eq(2)").val();
+	start = $(".form-control:eq(3)").val();
+	end = $(".form-control:eq(4)").val();
+	
+	$.ajax({
+		url: 'http://localhost/comments/baguette/marker.php',
+		type: 'PUT',
+		dataType: 'json',
+		data: "id="+id+"&name="+title+"&d_start="+start+"&d_end="+end+"&description="+description+"&category="+category+"&visible=1",
+		success: function(data) {
+				console.log('Update was performed.');
+		}
+	});
 }
 
 /****************** Function add by Hongyu Zhao *****************/
