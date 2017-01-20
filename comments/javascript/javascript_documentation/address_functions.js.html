@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: address_functions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: address_functions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+Licensed under the EUPL V.1.1 
+by Maxence DECANTER
+*/
+
+/**
+* Find the address the user input
+*
+* Add by DECANTER Maxence
+*/
+function addr_search() {
+	
+	var addressInput = document.getElementById('addr').value;
+	var geocoder = new google.maps.Geocoder();
+
+	geocoder.geocode({address: addressInput}, function(results, status) {
+
+	if (status == google.maps.GeocoderStatus.OK) {
+
+		var lat = results[0].geometry.location.lat();
+	    var lng = results[0].geometry.location.lng();
+	    var ad = results[0].formatted_address;
+		goTo(lat, lng);
+		removeTmpMarkers();
+		tmpMarker = addMarker(lat, lng, ad, capitalize(typeComment));
+		$(".form-control:eq(0)").val(ad);	
+		$('#comment-page').show();
+	}
+	});
+}
+
+/**
+*	Return the address without modify button htlm code
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} content
+*/
+function getFormattedAddr(content){
+	var aux ='';								 
+	var i =0;									
+	while (content.substring(i, i+1) != '&lt;'){		 
+		aux += content.substring(i, i+1);			 
+		i++;									 
+	}	
+	return aux;
+}
+
+
+
+/**
+*	Return the address without the number, only the street, the postal code, the city and the country
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} addr
+*/
+function getAddrWithoutNumber(addr){
+	var aux = '';
+	var i =0;
+	while(addr.substring(i,i+1) != ','){
+		if(isNaN(addr.substring(i,i+1))){
+			if(!isNaN(addr.substring(i-1,i)) &amp;&amp; addr.substring(i+1,i+2) == ','){
+			aux += '';
+			}else{
+			aux += addr.substring(i,i+1);
+			}
+		}
+		i++;
+	}
+	for(i; i&lt;addr.length;i++){
+		aux += addr.substring(i,i+1);
+	}
+	return aux;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Comment.html">Comment</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMarker">addMarker</a></li><li><a href="global.html#addr_search">addr_search</a></li><li><a href="global.html#addServerMarker">addServerMarker</a></li><li><a href="global.html#canPutMarker">canPutMarker</a></li><li><a href="global.html#change_icon">change_icon</a></li><li><a href="global.html#changeFormat">changeFormat</a></li><li><a href="global.html#changeVisibility">changeVisibility</a></li><li><a href="global.html#commentMainPage">commentMainPage</a></li><li><a href="global.html#compareDate">compareDate</a></li><li><a href="global.html#createComment">createComment</a></li><li><a href="global.html#displayComment">displayComment</a></li><li><a href="global.html#displayModifyComment">displayModifyComment</a></li><li><a href="global.html#displayServerComments">displayServerComments</a></li><li><a href="global.html#displayServerCommentsByCategory">displayServerCommentsByCategory</a></li><li><a href="global.html#getAddrWithoutNumber">getAddrWithoutNumber</a></li><li><a href="global.html#getFormattedAddr">getFormattedAddr</a></li><li><a href="global.html#getThreeLastComments">getThreeLastComments</a></li><li><a href="global.html#goTo">goTo</a></li><li><a href="global.html#loadTabModifyComment">loadTabModifyComment</a></li><li><a href="global.html#locationOfUserMarker">locationOfUserMarker</a></li><li><a href="global.html#modifyComment">modifyComment</a></li><li><a href="global.html#nextComment">nextComment</a></li><li><a href="global.html#onMapClick">onMapClick</a></li><li><a href="global.html#onMarkerClick">onMarkerClick</a></li><li><a href="global.html#onSearchClick">onSearchClick</a></li><li><a href="global.html#previewComment">previewComment</a></li><li><a href="global.html#previousComment">previousComment</a></li><li><a href="global.html#putActualTime">putActualTime</a></li><li><a href="global.html#putModifyComment">putModifyComment</a></li><li><a href="global.html#removeCurrentMarker">removeCurrentMarker</a></li><li><a href="global.html#removeMarker">removeMarker</a></li><li><a href="global.html#removeTmpMarkers">removeTmpMarkers</a></li><li><a href="global.html#selectIcon">selectIcon</a></li><li><a href="global.html#stat">stat</a></li><li><a href="global.html#todayDate">todayDate</a></li><li><a href="global.html#updateMarkerDatabase">updateMarkerDatabase</a></li><li><a href="global.html#validateComment">validateComment</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jan 20 2017 16:25:59 GMT+0200 (FLE)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
