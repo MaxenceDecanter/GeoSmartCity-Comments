@@ -1,4 +1,4 @@
-ordebody{
+body{
 	margin:0;
 	padding:0;
     font-size: 100%;
@@ -108,14 +108,16 @@ button > p{
     height: 1.2vw;
     width: 1.2vw;
     background-size: 100%;
-    margin-right: 1.5vw;
+    margin-top: .5rem;
+	margin-left: .3rem;
 }
 /*Routing icon pic*/
 #routingPic{
     height: 1.2vw;
     width: 1.2vw;
     background-size: 100%;
-    margin-left: 1.5vw;
+	margin-top: .5rem;
+	margin-left: .3rem;
 }
 .search-box,.close-icon,.search-wrapper {
 	position: relative;
@@ -171,7 +173,6 @@ button > p{
 #modeList{
 	display: inline-block;
     height: 3vw;
-    border-top: 1px solid white;
 }
 #modeList > div{
     display: inline-block;
@@ -274,69 +275,28 @@ button > p{
 }
 #modifyPage-header{
 	display: inline;
-}
-#commentsContainer{
-	height: auto;
-	width: 100%;
-	padding: 5px;
-}
-#commentsModeTitle,td{
-	color: black;
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
-}
-.commentsContent{
-	width: 100%;
-	height: 5vw;
-	border: 1px solid white;
-	margin: 8px 0;
-	overflow-y: scroll;
-	padding: 3px;
-	color: black;
-	display: none;
-    text-align: left;
-}
-#commentMode,
-#commentTitle,
-#editComment,
-#deleteComment{
-    border-right: 1px solid white;
-}
-#commentContent,
-#commentMode,
-#commentTitle{
-	font-size: .8rem;
-    text-align: center;
 
 }
-#commentContentTab,
-#arrowGroup,
-#btnGroup{
+#commentInfo > div{
+	text-align: left;
+	color: black;
+	font-size: .7vw;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+#commentContentTab{
+	margin-top: 20px;
+	border: 1px solid white;
+	border-radius: 15px;
     display: none;
 }
-#btnGroup > td > p{
+#btnGroup{
 	cursor: pointer;
+	margin-left: 8.333333325%;
+	font-size: .8vw;
 }
 #commentContentTab{
 	height: 350px;
-}
-#prev{
-    font-weight: bold;
-    cursor: pointer;
-    /*margin-right: 40%;*/
-	font-size: 1.8rem;
-}
-#next{
-    font-weight: bold;
-    cursor: pointer;
-    /*margin-left: 40%;*/
-	font-size: 1.8rem;
-}
-#comment{
-    font-weight: bold;
-    text-align: left;
-	padding-top: 0;
-    /*overflow-y: scroll;*/
 }
 #editComment > p,
 #deleteComment > p,
@@ -346,12 +306,9 @@ button > p{
     padding: 2px;
     margin-top: 8px;
 }
-.commentsNum{
-	/*margin-left: 5%;*/
-}
 /*TODO The media queries not complete for comment page, and and it into the modify page as well */
 /*Media queries*/
-@media only screen and (max-width:640px) {
+@media only screen and (max-width:770px) {
     body{
         font-size: 0.1vw;
     }
@@ -367,7 +324,7 @@ button > p{
 		overflow: hidden;
 	}
 	#infoPic {
-        height:5vw;
+		height:5vw;
         width:5vw;
         margin-right: 9vw;
         margin-bottom: 3vw;
@@ -405,24 +362,23 @@ button > p{
 		width: 8vw;
 		background-size: 100%;
 	}
-	#commentMode,
-	#commentTitle,
-	#commentContent{
-		font-size: 2rem;
+	#btnGroup > button{
+		width: 16%;
+	}
+
+	#commentInfo > div{
+		display: inline;
+		text-align: left;
+		color: black;
+		font-size: 2.4vw;
+		margin-bottom: 10px;
 	}
 }
 
-#editPage{
-    height: auto;
-    z-index:1;
-    color: white;
-    position:absolute;
-    padding: 10px;
-    left:0;
-    top: 0;
-    width: 23.75vw;
-    background-color: #8ae600;
-    text-align: center;
-    overflow: hidden;
-    display: none;
+.titleNew{
+	margin: 10px;
+}
+.commentNew{
+	margin: 10px;
+	height: 190px;
 }

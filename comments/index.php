@@ -4,7 +4,6 @@
 <!--		<div id="preview-comment"></div>-->
 <!--Include the modify page here-->
 <?php include_once ('modify.php');?>
-<?php include_once ('editComment.php');?>
 <div id="mapid">
     <!-- Empty div for the map-->
 </div>
@@ -14,13 +13,13 @@
         <!--info-->
         <div id="information">
             <a href="http://geosmartcity.dc.turkuamk.fi/?page=home&lang=en">
-                <img src="images/infoicon.png" id="infoPic">
+                <img class="pull-left" src="images/infoicon.png" id="infoPic">
             </a>
         </div>
         <!--Logo Title-->
         <div id="page-name">Southwest Finland Routing</div>
         <!--comment-->
-        <div id="routing">
+        <div class="pull-right" id="routing">
             <!--Add routing page link here-->
             <a href="http://geosmartcity.dc.turkuamk.fi/?page=home&lang=en">
                 <img src="images/infoicon.png" id="routingPic">

@@ -118,13 +118,44 @@ function multipleModifyFuns() {
 	//open comments list
 function openCommentList() {
     $("#commentContentTab").show();
-    $("#btnGroup").show();
     $("#arrowGroup").show();
 	
+}
+//Hide the whole modify page
+function cancelComment(){
+    $("#modifyPage").hide();
+    $("#comment-page").show();
 }
 //Edit comments part
 function showEditPage() {
     $("#editPage").show();
-    $("#comment-page").hide();
-    $("#modifyPage").hide();
+    $("#commentInfo").hide();
+}
+
+//Replace Title and comment tab to the inputBox and textarea
+function editComment(){
+    //Get the page name
+    var pageName = document.getElementById("page-name");
+    //Change the page name
+    pageName.innerHTML = "Edit page";
+    //Get the title of comment
+    var title = document.getElementById("commentTitle");
+    //Get the contents of comment
+    var comment = document.getElementById("commentContent");
+    //Create the inputBox
+    var titleNew = document.createElement("input");
+    //Give the className to new elements
+    titleNew.setAttribute("class", "titleNew col-sm-12 input input-group");
+    //Create the textarea
+    var commentNew = document.createElement("textarea");
+    commentNew.setAttribute("class", "commentNew form-control col-sm-12");
+//    Replace title to the inputBox
+    title.parentNode.replaceChild(titleNew, title);
+//Replace the comment to  the textarea
+    comment.parentNode.replaceChild(commentNew, comment);
+
+    $("#commentContentTab").hide();
+    $("#btnGroup").hide();
+
+
 }
