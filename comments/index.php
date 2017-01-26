@@ -4,6 +4,7 @@
 <!--		<div id="preview-comment"></div>-->
 <!--Include the modify page here-->
 <?php include_once ('modify.php');?>
+
 <div id="mapid">
     <!-- Empty div for the map-->
 </div>

@@ -134,28 +134,32 @@ function showEditPage() {
 
 //Replace Title and comment tab to the inputBox and textarea
 function editComment(){
-    //Get the page name
     var pageName = document.getElementById("page-name");
-    //Change the page name
-    pageName.innerHTML = "Edit page";
-    //Get the title of comment
-    var title = document.getElementById("commentTitle");
-    //Get the contents of comment
-    var comment = document.getElementById("commentContent");
-    //Create the inputBox
+    var title = document.getElementById("btnGroup");
+    var comment = document.getElementById("commentTitle");
+    var save = document.getElementById("commentContent");
+    var cancel = document.getElementById("commentContentTab");
     var titleNew = document.createElement("input");
-    //Give the className to new elements
-    titleNew.setAttribute("class", "titleNew col-sm-12 input input-group");
-    //Create the textarea
     var commentNew = document.createElement("textarea");
+    var saveBtn = document.createElement("input");
+    var cancelBtn = document.createElement("input");
+    pageName.innerHTML = "Edit page";
+    titleNew.placeholder="Type new title here ..";
+    titleNew.setAttribute("class", "titleNew form-control ");
     commentNew.setAttribute("class", "commentNew form-control col-sm-12");
-//    Replace title to the inputBox
+    commentNew.placeholder="Type new comment here ..";
+    saveBtn.type = "button";
+    saveBtn.value = "Save";
+    saveBtn.setAttribute("class", "btn col-sm-6 btn-default");
+    cancelBtn.type = "button";
+    cancelBtn.value = "Cancel";
+    cancelBtn.setAttribute("class", "btn col-sm-6 btn-default");
     title.parentNode.replaceChild(titleNew, title);
-//Replace the comment to  the textarea
     comment.parentNode.replaceChild(commentNew, comment);
-
-    $("#commentContentTab").hide();
-    $("#btnGroup").hide();
-
-
+    save.parentNode.replaceChild(saveBtn, save);
+    cancel.parentNode.replaceChild(cancelBtn, cancel);
+    cancel.onclick= function() {
+        $("modifyPage").hide();
+        $("comment-page").show();
+    };
 }

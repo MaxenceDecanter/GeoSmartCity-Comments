@@ -257,7 +257,8 @@ button > p{
 	display: none;
 }
 /*Modify page*/
-#modifyPage{
+#modifyPage,
+#editPage{
     width: 23.75vw;
     z-index:1;
     color: white;
@@ -376,9 +377,9 @@ button > p{
 }
 
 .titleNew{
-	margin: 10px;
+	/*margin-left: 50px;*/
 }
 .commentNew{
-	margin: 10px;
-	height: 190px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
