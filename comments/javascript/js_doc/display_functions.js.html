@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: display_functions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: display_functions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+Licensed under the EUPL V.1.1 
+by Benjamin D'HOOP &amp; Guillaume KLEINPOORT &amp; Maxence DECANTER
+*/
+
+/**
+*	Add a marker on my map + event
+* @param {number} lat
+* @param {number} lon
+* @param {string} addr
+* @param {string} iconChosen
+*/
+function addMarker(lat, lng, addr, iconChosen, title, d_start, description,id){
+    var marker;
+    switch(iconChosen) {
+        case "Problem":
+            marker = L.marker(L.latLng(lat, lng), {icon: problemIcon}).addTo(markersArray);
+            break;
+        case "Information":
+            marker = L.marker(L.latLng(lat, lng), {icon: infoIcon}).addTo(markersArray);
+            break;
+        case "Event":
+            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
+            break;
+        case "Other":
+            marker = L.marker(L.latLng(lat, lng), {icon: otherIcon}).addTo(markersArray);
+            break;
+        default:
+            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(markersArray);
+    }
+	var latlng = L.latLng(lat, lng);
+	tab_markers.push([marker,title, iconChosen, d_start, description,id]);    // Modify by DECANTER Maxence
+	if(addr != undefined){
+        marker.bindPopup(addr+"&lt;a href='#' onclick='multipleModifyFuns();'> &lt;strong>View&lt;/strong>&lt;/a>"); // Modify by DECANTER Maxence
+    }else{
+        var geocoder = new google.maps.Geocoder();																				//
+		var latlng = new google.maps.LatLng(lat, lng);																			//
+		geocoder.geocode({'latLng': latlng}, function(results, status) {														//
+		/* Si le géocodage inversé a réussi */																					// Add by DECANTER Maxence
+		if (status == google.maps.GeocoderStatus.OK) {																			//																		//
+			marker.bindPopup(results[0].formatted_address+"&lt;a href='#' onclick='previewComment();'> &lt;strong>View&lt;/strong>&lt;/a>").openPopup();	//
+			$(".form-control:eq(0)").val(results[0].formatted_address);															//
+		}																														//
+		});    
+    }
+	markersArray.addTo(mymap);
+	marker.on("click", onMarkerClick);
+	return marker;
+}
+
+ /**
+ *	Display all comments on the map
+ */
+function displayServerComments(){
+    var arrayComments;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (xhttp.readyState == 4 &amp;&amp; xhttp.status == 200) {
+            arrayComments = jQuery.parseJSON(xhttp.responseText);
+            console.log(arrayComments);
+            arrayComments.forEach(function(obj){
+                console.log(obj);
+                if(!obj.position){
+                    console.log("Problem with this marker:");
+                    console.log(obj);
+                }
+                else{
+					if(obj.visible == "1"){        // Add by DECANTER Maxence
+						//updateMarkerDatabase();
+						coord = obj.position.geometry.coordinates;
+						lat = coord[0];
+						lon = coord[1];
+						addr = obj.position.properties.name;
+						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description,obj.id);
+					}
+                }
+            });
+        }
+    };
+    xhttp.open("GET", 'http://gis.dc.turkuamk.fi/maxence.decanter/comments/baguette/marker.php', true);
+    xhttp.send();
+}
+
+/**
+*	Display comments by category (event, problem, info, other)
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} cat
+*/
+function displayServerCommentsByCategory(cat){
+	console.log(this.typeComment);
+    var arrayComments;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (xhttp.readyState == 4 &amp;&amp; xhttp.status == 200) {
+            arrayComments = jQuery.parseJSON(xhttp.responseText);
+            arrayComments.forEach(function(obj){
+                if(!obj.position){
+                    console.log("Problem with this marker:");
+                    console.log(obj);
+                }
+                else{
+					if(obj.visible == "1"){
+						if(obj.category == cat){
+							//updateMarkerDatabase();
+							coord = obj.position.geometry.coordinates;
+							lat = coord[0];
+							lon = coord[1];
+							addr = obj.position.properties.name;
+						addMarker(lat, lon, addr, capitalize(obj.category), obj.name, obj.d_start, obj.description,obj.id);
+						}
+					}
+                }
+            });
+        }
+    };
+    xhttp.open("GET", 'http://gis.dc.turkuamk.fi/maxence.decanter/comments/baguette/marker.php', true);
+    xhttp.send();
+}
+
+/**
+*   Displays the comment on main page
+*
+*	Modify by DECANTER Maxence
+*/
+function commentMainPage(addr){
+	console.log(addr);
+	tab = tab_markers;
+	var d = $('#commentMainPage');
+	d.empty();
+	for (var i = 0 ; i &lt; tab_markers.length; i++){
+		if(addr == getFormattedAddr(tab[i][0].getPopup().getContent())){
+			console.log(tab[i]);
+			d.append('&lt;p>&lt;strong>Title:&lt;/strong> '+tab[i][1]+'&lt;/p>');
+			d.append('&lt;p>&lt;strong>Mode:&lt;/strong> '+tab[i][2]+'&lt;/p>');
+			d.append('&lt;p>&lt;strong>Created on:&lt;/strong> '+tab[i][3]+'&lt;/p>');
+			d.append('&lt;p>&lt;strong>Description:&lt;/strong> '+tab[i][4]+'&lt;/p>');
+			d.append('&lt;/br>');
+		}
+	} 
+}
+
+/**
+*	Insert the HTML code in the right div to display the comment
+*
+*	Add by DECANTER Maxence
+*
+*	@param (int) i
+*/
+function displayModifyComment(i){
+	var b = $('#commentMode');
+	b.empty();
+	b.append('&lt;h5>Mode&lt;/h5>')
+	b.append('&lt;h5>'+tab_modify[i][2]+'&lt;/h5>')
+	var c = $('#commentTitle');
+	c.empty();
+	c.append('&lt;h5>Title&lt;/h5>')
+	c.append('&lt;h5>'+tab_modify[i][1]+'&lt;/h5>')
+	var d = $('#comment');
+	d.empty();
+	d.append('&lt;p>'+tab_modify[i][4]+'&lt;/p>');
+	d.append('&lt;p>Created on: '+tab_modify[i][3]+'&lt;/p>');
+	commentNbr = i;
+	console.log(commentNbr);
+}
+
+/**
+*   Displays the comment on preview-comment div
+*
+*	Modify by DECANTER Maxence
+*/
+function previewComment(){
+	$('#comment-page').hide();
+	$('#preview-comment').show();
+	var isFind = 0;
+	var i = 0;
+	while(isFind !=1){
+		console.log(tab_markers[i][0]._latlng);
+		if(selectedMarker === tab_markers[i][0]){
+			title = tab_markers[i][1];
+			type = tab_markers[i][2];
+			date = tab_markers[i][3];
+			description = tab_markers[i][4];
+			isFind = 1;
+		}
+		i++;
+	}
+	var d = $('#preview-comment');
+	d.empty();
+	d.append('&lt;p>&lt;strong>Title:&lt;/strong> '+title+'&lt;/p>');
+	d.append('&lt;p>&lt;strong>Type:&lt;/strong> '+type+'&lt;/p>');
+	d.append('&lt;p>&lt;strong>Created on:&lt;/strong> '+date+'&lt;/p>');
+	d.append('&lt;p>&lt;strong>Description:&lt;/strong> '+description+'&lt;/p>');
+}
+
+/**
+*   Displays the comment contained in the marker
+*   @param {L.marker} marker
+*/
+function displayComment(marker){
+    var c= marker.comment;
+    d=$('#display');
+    d.empty();
+    d.append('&lt;p>Title: '+c.title+'&lt;/p>');
+    d.append('&lt;p>Type: '+c.type+'&lt;/p>');
+    d.append('&lt;p>Created on: '+c.date_creation+'&lt;/p>');
+    d.append('&lt;p>Description:'+'&lt;br/>'+c.description+'&lt;/p>');
+}
+
+/**
+*   Removes the temporary markers of the map
+*/
+function removeTmpMarkers(){
+    $('#modify-comment').hide();
+	$('#add-comment').hide();
+    if(tmpMarker != "t")
+        mymap.removeLayer(tmpMarker);
+    canPlaceMarker=true;
+}
+
+/**
+*	Removes the marker from the map
+*   @param {L.marker} marker
+*/
+function removeMarker(marker){
+	mymap.removeLayer(marker);
+}
+
+/**
+*	Removes the selectedMarker from the map
+*/
+function removeCurrentMarker(){
+	mymap.removeLayer(selectedMarker);	
+}
+
+/**
+*	Change the icon image
+*	@param (string) name
+*/
+function change_icon(name){
+    switch(name) {
+        case "Problem":
+            tmpMarker.setIcon(problemIcon);
+            break;
+        case "Information":
+             tmpMarker.setIcon(infoIcon);
+            break;
+        case "Event":
+             tmpMarker.setIcon(eventIcon);
+            break;
+        case "Other":
+            tmpMarker.setIcon(otherIcon);
+            break;
+        default:
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Comment.html">Comment</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMarker">addMarker</a></li><li><a href="global.html#addr_search">addr_search</a></li><li><a href="global.html#addServerMarker">addServerMarker</a></li><li><a href="global.html#canPutMarker">canPutMarker</a></li><li><a href="global.html#change_icon">change_icon</a></li><li><a href="global.html#changeFormat">changeFormat</a></li><li><a href="global.html#changeVisibility">changeVisibility</a></li><li><a href="global.html#commentMainPage">commentMainPage</a></li><li><a href="global.html#compareDate">compareDate</a></li><li><a href="global.html#createComment">createComment</a></li><li><a href="global.html#displayComment">displayComment</a></li><li><a href="global.html#displayModifyComment">displayModifyComment</a></li><li><a href="global.html#displayServerComments">displayServerComments</a></li><li><a href="global.html#displayServerCommentsByCategory">displayServerCommentsByCategory</a></li><li><a href="global.html#getAddrWithoutNumber">getAddrWithoutNumber</a></li><li><a href="global.html#getFormattedAddr">getFormattedAddr</a></li><li><a href="global.html#getThreeLastComments">getThreeLastComments</a></li><li><a href="global.html#goTo">goTo</a></li><li><a href="global.html#loadTabModifyComment">loadTabModifyComment</a></li><li><a href="global.html#locationOfUserMarker">locationOfUserMarker</a></li><li><a href="global.html#modifyComment">modifyComment</a></li><li><a href="global.html#nextComment">nextComment</a></li><li><a href="global.html#onMapClick">onMapClick</a></li><li><a href="global.html#onMarkerClick">onMarkerClick</a></li><li><a href="global.html#onSearchClick">onSearchClick</a></li><li><a href="global.html#previewComment">previewComment</a></li><li><a href="global.html#previousComment">previousComment</a></li><li><a href="global.html#putActualTime">putActualTime</a></li><li><a href="global.html#putModifyComment">putModifyComment</a></li><li><a href="global.html#removeCurrentMarker">removeCurrentMarker</a></li><li><a href="global.html#removeMarker">removeMarker</a></li><li><a href="global.html#removeTmpMarkers">removeTmpMarkers</a></li><li><a href="global.html#selectIcon">selectIcon</a></li><li><a href="global.html#stat">stat</a></li><li><a href="global.html#todayDate">todayDate</a></li><li><a href="global.html#updateMarkerDatabase">updateMarkerDatabase</a></li><li><a href="global.html#validateComment">validateComment</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jan 20 2017 16:43:29 GMT+0200 (FLE)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

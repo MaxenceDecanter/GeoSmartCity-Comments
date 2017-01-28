@@ -46,8 +46,9 @@ button > p{
 	position: absolute;
 	border-radius:5px;
 	padding: 10px;
-	left: 96%;
+	left: 96vw;
 	margin-top: 20px;
+
 }
 #EN{
 	width: 50px;
@@ -58,12 +59,15 @@ button > p{
 	position: absolute;
 	border-radius:5px;
 	padding: 10px;
-	left: 92%;
+	left: 92vw;
 	margin-top: 20px;
 }
 #EN:hover,
 #FI:hover{
 	background-color: #4d4d4c;
+}
+.languageBtn{
+	float: right;
 }
 #map-form a:active{
     color: #FFFFFF;
@@ -117,7 +121,7 @@ button > p{
     width: 1.2vw;
     background-size: 100%;
 	margin-top: .5rem;
-	margin-left: .3rem;
+	margin-left: .2rem;
 }
 .search-box,.close-icon,.search-wrapper {
 	position: relative;
@@ -202,17 +206,12 @@ button > p{
 	background: url(images/problem.png) no-repeat;
 	background-size: 100%;
 }
-/*TODO add the viewlAll Mode Icon stylesheet after get the icon*/
-/*#viewAll >div{*/
-	/*height: 3vw;*/
-	/*width: 3vw;*/
-	/*vertical-align: middle;*/
-	/*top: 3px;*/
-	/*border-radius: 50%;*/
-	/*border: 1px solid white;*/
-	/*text-align: center;*/
-	/*padding: 50%;*/
-/*}*/
+#viewAll{
+	height: 3vw;
+	width: 3vw;
+	background: url(images/all.png) no-repeat;
+	background-size: 100%;
+}
 #mode-info,
 #mode-event,
 #mode-problem,
@@ -276,7 +275,6 @@ button > p{
 }
 #modifyPage-header{
 	display: inline;
-
 }
 #commentInfo > div{
 	text-align: left;
@@ -286,7 +284,7 @@ button > p{
 	font-weight: bold;
 }
 #commentContentTab{
-	margin-top: 20px;
+	margin-top: 40px;
 	border: 1px solid white;
 	border-radius: 15px;
     display: none;
@@ -347,10 +345,12 @@ button > p{
 		padding-bottom: 0.5vh;
 		font-weight: lighter;
 	}
-    #modeList{
+    #modeList,
+	#modifyBtnGroup{
         margin-bottom: 0;
     }
-	#modeList > div{
+	#modeList > div,
+	#modifyBtnGroup > div{
 		display: inline-block;
 		margin: 2vw;
 	}
@@ -358,13 +358,15 @@ button > p{
 	#info,
 	#problem,
 	#other,
-	#viewAll{
+	#viewAll,
+	#prevBtn,
+	#nextBtn,
+	#removeBtn,
+	#cancelBtn,
+	#nextBtn{
 		height: 8vw;
 		width: 8vw;
 		background-size: 100%;
-	}
-	#btnGroup > button{
-		width: 16%;
 	}
 
 	#commentInfo > div{
@@ -374,12 +376,60 @@ button > p{
 		font-size: 2.4vw;
 		margin-bottom: 10px;
 	}
+	#FI,
+	#EN{
+		visibility: hidden;
+	}
 }
-
 .titleNew{
 	/*margin-left: 50px;*/
 }
 .commentNew{
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+/*Edit btns*/
+#modifyBtnGroup{
+	display: inline-block;
+	height: 3vw;
+	margin: 0 auto;
+}
+#modifyBtnGroup > div,
+#modifyBtnGroup > a{
+	display: inline-block;
+	margin: .1vw .5vw .1vw .5vw;
+}
+#prevBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/prev.png) no-repeat;
+	background-size: 100%;
+}
+#editBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/edit.png) no-repeat;
+	background-size: 100%;
+}
+#removeBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/remove.png) no-repeat;
+	background-size: 100%;
+}
+#cancelBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/cancel.png) no-repeat;
+	background-size: 100%;
+	border: none;
+}
+#nextBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/next.png) no-repeat;
+	background-size: 100%;
+}
+.cancelNew{
+	text-decoration: none;
 }

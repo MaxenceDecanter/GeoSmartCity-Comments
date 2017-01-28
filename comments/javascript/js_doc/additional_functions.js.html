@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: additional_functions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: additional_functions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+Licensed under the EUPL V.1.1 
+by Maxence DECANTER &amp; Benjamin D'HOOP &amp; Guillaume KLEINPOORT
+*/
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/**
+*	Give the right format to put date in the database
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} date
+*	@param {string} time
+*/
+function changeFormat(date, time){
+	return date+" "+time+":00";
+}
+
+/**
+*	Give the date of today in the right format
+*
+*	Add by DECANTER Maxence
+*/
+function todayDate(){
+	var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+		hour = d.getHours(),
+		min = d.getMinutes();
+
+    if (month.length &lt; 2) month = '0' + month;
+    if (day.length &lt; 2) day = '0' + day;
+	if (hour.length &lt; 2) hour = '0' + hour;
+	if (min.length &lt; 2) min = '0' + min;
+
+    return [year, month, day].join('-')+" "+[hour,min].join(':')+":00";
+}
+
+/**
+*	Compare two date (2 if date1 older, 1 if date2 older, 0 if same date)
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} date1
+*	@param {string} date2
+*/
+function compareDate(date1, date2){
+	//Compare year
+	if(date1.substring(0,4) &lt; date2.substring(0,4))
+		return 2;
+	else if(date1.substring(0,4) > date2.substring(0,4))
+		return 1;
+	else if(date1.substring(0,4) == date2.substring(0,4)){
+		//Compare month
+		if(date1.substring(5,7) &lt; date2.substring(5,7))
+			return 2;
+		else if(date1.substring(5,7) > date2.substring(5,7))
+			return 1;
+		else if(date1.substring(5,7) == date2.substring(5,7)){
+			//Compare day
+			console.log(date1 , date2);
+			if(date1.substring(8,10) &lt; date2.substring(8,10))
+				return 2;
+			else if(date1.substring(8,10) > date2.substring(8,10))
+				return 1;
+			else if(date1.substring(8,10) == date2.substring(8,10)){
+				//Compare hours
+				if(date1.substring(11,13) &lt; date2.substring(11,13))
+					return 2;
+				else if(date1.substring(11,13) > date2.substring(11,13))
+					return 1;
+				else if(date1.substring(11,13) == date2.substring(11,13)){
+					//Compare minutes
+					if(date1.substring(14,16) &lt; date2.substring(14,16))
+						return 2;
+					if(date1.substring(14,16) > date2.substring(14,16))
+						return 1;
+					if(date1.substring(14,16) == date2.substring(14,16))
+						return 0;
+				}
+			}
+		}
+	}
+}
+
+var actualTime = 0;
+
+/**
+*	Put actualTime to 1 if you want to use the actual time for the database
+*
+*	Add by DECANTER Maxence
+*
+*/
+function putActualTime(){
+	this.actualTime = 1;
+}
+
+/**
+*	Check if there is no comment on the same coordinates
+*
+*	Add by DECANTER Maxence
+*
+*	@param {float} lat
+*	@param {float} lng
+*/
+function canPutMarker(lat, lng){
+	var aux;
+	for(var i = 0; i&lt;tab_markers.length; i++){
+		if(tab_markers[i][0]._latlng.lat === lat &amp;&amp; tab_markers[i][0]._latlng.lng === lng )
+			aux = 0;
+		else
+			aux =1;
+	}
+	
+	return aux;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Comment.html">Comment</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMarker">addMarker</a></li><li><a href="global.html#addr_search">addr_search</a></li><li><a href="global.html#addServerMarker">addServerMarker</a></li><li><a href="global.html#canPutMarker">canPutMarker</a></li><li><a href="global.html#change_icon">change_icon</a></li><li><a href="global.html#changeFormat">changeFormat</a></li><li><a href="global.html#changeVisibility">changeVisibility</a></li><li><a href="global.html#commentMainPage">commentMainPage</a></li><li><a href="global.html#compareDate">compareDate</a></li><li><a href="global.html#createComment">createComment</a></li><li><a href="global.html#displayComment">displayComment</a></li><li><a href="global.html#displayModifyComment">displayModifyComment</a></li><li><a href="global.html#displayServerComments">displayServerComments</a></li><li><a href="global.html#displayServerCommentsByCategory">displayServerCommentsByCategory</a></li><li><a href="global.html#getAddrWithoutNumber">getAddrWithoutNumber</a></li><li><a href="global.html#getFormattedAddr">getFormattedAddr</a></li><li><a href="global.html#getThreeLastComments">getThreeLastComments</a></li><li><a href="global.html#goTo">goTo</a></li><li><a href="global.html#loadTabModifyComment">loadTabModifyComment</a></li><li><a href="global.html#locationOfUserMarker">locationOfUserMarker</a></li><li><a href="global.html#modifyComment">modifyComment</a></li><li><a href="global.html#nextComment">nextComment</a></li><li><a href="global.html#onMapClick">onMapClick</a></li><li><a href="global.html#onMarkerClick">onMarkerClick</a></li><li><a href="global.html#onSearchClick">onSearchClick</a></li><li><a href="global.html#previewComment">previewComment</a></li><li><a href="global.html#previousComment">previousComment</a></li><li><a href="global.html#putActualTime">putActualTime</a></li><li><a href="global.html#putModifyComment">putModifyComment</a></li><li><a href="global.html#removeCurrentMarker">removeCurrentMarker</a></li><li><a href="global.html#removeMarker">removeMarker</a></li><li><a href="global.html#removeTmpMarkers">removeTmpMarkers</a></li><li><a href="global.html#selectIcon">selectIcon</a></li><li><a href="global.html#stat">stat</a></li><li><a href="global.html#todayDate">todayDate</a></li><li><a href="global.html#updateMarkerDatabase">updateMarkerDatabase</a></li><li><a href="global.html#validateComment">validateComment</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jan 20 2017 16:43:29 GMT+0200 (FLE)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

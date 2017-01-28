@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: comment_functions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: comment_functions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+Licensed under the EUPL V.1.1 
+by Benjamin D'HOOP &amp; Guillaume KLEINPOORT &amp; Maxence DECANTER
+*/
+
+/**
+*	Places a marker with a comment attached
+* @param {boolean} bool
+*/
+function validateComment(bool){
+	
+    comment = createComment();
+	if(comment == undefined){                   //
+		console.log("missing argument");		// Add by DECANTER Maxence
+	}else{										//
+		tmpMarker['comment']= comment;
+		if(!bool){
+			mymap.removeLayer(tmpMarker);
+		}else{
+			addServerMarker(tmpMarker);
+			console.log(tmpMarker);
+		}
+		tmpMarker = "t";
+		canPlaceMarker=true;
+		actualTime = 0;
+	}
+}
+
+
+/**
+*	Modifies the marker currently selected
+* @param {boolean} bool
+*/
+function modifyComment(bool){
+    $('#comment-page').hide("slow");
+	$('#modify-comment').hide("slow");
+	if(!bool){
+		mymap.removeLayer(selectedMarker);
+        mymap.removeLayer(tmpMarker);
+	}
+    selectedMarker.dragging.disable();
+	selectedMarker = "s";
+}
+
+var tmpComment;
+/**
+*   Creates a new comment with the given informations from the form
+*
+*	Modify by DECANTER Maxence
+*
+*   @return {Comment} The new Comment object.
+*/
+function createComment(){
+	f = document.getElementsByClassName('iconContent');
+	
+	if(typeComment == 'information'){
+		title= $(".form-control:eq(6)").val();
+		description = $(".form-control:eq(7)").val();
+		d = $(".form-control:eq(8)").val();
+		start_time = $(".form-control:eq(9)").val();
+		end_time = $(".form-control:eq(10)").val();
+	}else if(typeComment == 'event'){
+		title= $(".form-control:eq(1)").val();
+		description = $(".form-control:eq(2)").val();
+		d = $(".form-control:eq(3)").val();
+		start_time = $(".form-control:eq(4)").val();
+		end_time = $(".form-control:eq(5)").val();
+	}else if(typeComment == 'problem'){
+		title= $(".form-control:eq(13)").val();
+		description = $(".form-control:eq(14)").val();
+		d = $(".form-control:eq(15)").val();
+		start_time = $(".form-control:eq(16)").val();
+		end_time = $(".form-control:eq(17)").val();
+	}else if(typeComment == 'other'){
+		title= $(".form-control:eq(11)").val();
+		description = $(".form-control:eq(12)").val();
+		
+	}
+	
+	if(actualTime ===1 || typeComment == 'other'){
+		date_creation = todayDate();
+		end = "1999-01-01 00:00:00";
+	}else{
+		date_creation = changeFormat(d, start_time);
+		end = changeFormat(d,end_time);
+	}
+	if(title == '' || description == '' || date_creation.length != 19 || end.length != 19){
+		alert("Something is missing in the form !");
+	}else{
+		type = this.typeComment;
+		tmpComment = new Comment(title, description, type, date_creation, end);
+		console.log(tmpComment);
+	}
+	
+	return tmpComment;
+}
+
+
+
+/**
+*   Creates an instance of Comment
+*
+*   @constructor
+*   @this {Comment}
+*   @param {string} title
+*   @param {string} description
+*   @param {string} type
+*   @param {string} date_start
+*   @param {string} time_start
+*   @param {string} date_end
+*   @param {string} time_end
+*/
+function Comment(title, description, type, date_creation, end){
+    this.title = title;
+    this.description = description;
+    this.type = type;
+    this.date_creation = date_creation;
+    this.end = end;
+}
+
+var typeComment = "";
+
+/**
+*	Select which category is choose
+*
+*	Add by DECANTER Maxence
+*
+*	@param {event} evt
+*	@param {string} iconName
+*	@param {string} type
+*/
+function selectIcon(evt, iconName, type){
+	this.typeComment = type;
+	openIcon(event, iconName);
+	tab_markers = [];
+	markersArray.clearLayers();
+	if(tmpMarker != "t")
+		tmpMarker.addTo(mymap);
+	if(type == 'viewall'){
+		displayServerComments();
+		stat();
+		$("#stat").show();
+	}else
+		displayServerCommentsByCategory(type);
+	change_icon(capitalize(type));
+}
+
+/**
+*	Return the three last comment in the same addr
+*
+*	Add by DECANTER Maxence
+*
+*	@param {string} addr
+*/
+function getThreeLastComments(addr){
+	var tab_sameAddr = [];
+	for (var i = 0 ; i &lt; tab_markers.length; i++){
+		if(addr == getFormattedAddr(tab_markers[i][0].getPopup().getContent())){
+			tab_sameAddr.push(tab_markers[i]);
+		}
+	} 
+	if(tab_sameAddr.length > 3){
+		tab_sameAddr = tab_sameAddr.slice(0,3);
+	}
+	return tab_sameAddr;
+}
+
+var tab_modify;
+var commentNbr;
+
+/**
+*	Load the tab with the 3 last comments of the street selected
+*
+*	Add by DECANTER Maxence
+*
+*/
+function loadTabModifyComment(){
+	tab_modify = [];
+	commentNbr = 0;
+	tab_modify = getThreeLastComments($(".form-control:eq(0)").val());
+	console.log(tab_modify);
+}
+
+/**
+*	Display the next comment in the modify page
+*
+*	Add by DECANTER Maxence
+*
+*/
+function nextComment(){
+	if(commentNbr === 0)
+		displayModifyComment(1);
+	else if(commentNbr === 1)
+		displayModifyComment(2);
+	else if(commentNbr === 2)
+		console.log("It's the last comment");
+}
+
+/**
+*	Display the previous comment in the modify page
+*
+*	Add by DECANTER Maxence
+*
+*/
+function previousComment(){
+	if(commentNbr === 2)
+		displayModifyComment(1);
+	else if(commentNbr === 1)
+		displayModifyComment(0);
+	else if(commentNbr === 0)
+		console.log("It's the first comment");
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Comment.html">Comment</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMarker">addMarker</a></li><li><a href="global.html#addr_search">addr_search</a></li><li><a href="global.html#addServerMarker">addServerMarker</a></li><li><a href="global.html#canPutMarker">canPutMarker</a></li><li><a href="global.html#change_icon">change_icon</a></li><li><a href="global.html#changeFormat">changeFormat</a></li><li><a href="global.html#changeVisibility">changeVisibility</a></li><li><a href="global.html#commentMainPage">commentMainPage</a></li><li><a href="global.html#compareDate">compareDate</a></li><li><a href="global.html#createComment">createComment</a></li><li><a href="global.html#displayComment">displayComment</a></li><li><a href="global.html#displayModifyComment">displayModifyComment</a></li><li><a href="global.html#displayServerComments">displayServerComments</a></li><li><a href="global.html#displayServerCommentsByCategory">displayServerCommentsByCategory</a></li><li><a href="global.html#getAddrWithoutNumber">getAddrWithoutNumber</a></li><li><a href="global.html#getFormattedAddr">getFormattedAddr</a></li><li><a href="global.html#getThreeLastComments">getThreeLastComments</a></li><li><a href="global.html#goTo">goTo</a></li><li><a href="global.html#loadTabModifyComment">loadTabModifyComment</a></li><li><a href="global.html#locationOfUserMarker">locationOfUserMarker</a></li><li><a href="global.html#modifyComment">modifyComment</a></li><li><a href="global.html#nextComment">nextComment</a></li><li><a href="global.html#onMapClick">onMapClick</a></li><li><a href="global.html#onMarkerClick">onMarkerClick</a></li><li><a href="global.html#onSearchClick">onSearchClick</a></li><li><a href="global.html#previewComment">previewComment</a></li><li><a href="global.html#previousComment">previousComment</a></li><li><a href="global.html#putActualTime">putActualTime</a></li><li><a href="global.html#putModifyComment">putModifyComment</a></li><li><a href="global.html#removeCurrentMarker">removeCurrentMarker</a></li><li><a href="global.html#removeMarker">removeMarker</a></li><li><a href="global.html#removeTmpMarkers">removeTmpMarkers</a></li><li><a href="global.html#selectIcon">selectIcon</a></li><li><a href="global.html#stat">stat</a></li><li><a href="global.html#todayDate">todayDate</a></li><li><a href="global.html#updateMarkerDatabase">updateMarkerDatabase</a></li><li><a href="global.html#validateComment">validateComment</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jan 20 2017 16:43:29 GMT+0200 (FLE)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -11,24 +11,24 @@
         <!--comment-->
         <div class="pull-right" id="routing">
             <!--Add routing page link here-->
-            <a href="http://geosmartcity.dc.turkuamk.fi/?page=home&lang=en">
-                <img src="images/infoicon.png" id="routingPic">
+            <a href="http://gis.dc.turkuamk.fi/">
+                <img src="images/routicon.png" id="routingPic">
             </a>
         </div>
     </div>
-    <!--btns for switch comments to previous/next & edit/delete/cancel-->
-    <div class="col-sm-12" id="btnGroup">
-        <button class="col-sm-2 btn btn-default btn-sm" id="prevComment" onclick="previousComment();" data-toggle="tooltip" title="Click to view the previous comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">&#x3c;</button>
-        <button class="col-sm-2 btn btn-default btn-sm" id="edit" data-toggle="tooltip" title="Edit this comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();" onclick="editComment();">
-            <strong>E</strong></button>
-        <button class="col-sm-2 btn btn-default btn-sm" id="remove" data-toggle="tooltip" title="Delete this comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();"><strong>R</strong></button>
-        <button class="col-sm-2 btn btn-default btn-sm" id="cancel" data-toggle="tooltip" title="Go back to the comment page" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();" onclick="cancelComment();"><strong>C</strong></button>
-        <button class="col-sm-2 btn btn-default btn-sm" id="nextComment"onclick="nextComment();" data-toggle="tooltip" title="Click to view the next comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">&#x3e;</button>
+    <div class="col-sm-12" id="modifyBtnGroup">
+        <div id="prevBtn" data-toggle="tooltip" title="previous" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="previousComment();"></div>
+        <div id="editBtn" data-toggle="tooltip" title="edit comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="editComment();"></div>
+        <div id="removeBtn" data-toggle="tooltip" title="remove comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onmouseover="tootips()"></div>
+        <a href="index.php">
+            <div id="cancelBtn" data-toggle="tooltip" title="cancel" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onmouseover="tootips()"></div>
+        </a>
+        <div id="nextBtn" data-toggle="tooltip" title="next" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onmouseover="tootips()" onclick="nextComment();"></div>
     </div>
     <div class="col-sm-12" id="commentInfo">
-        <div class="col-sm-8" id="commentTitle">Title</div>
-        <div class="col-sm-4" id="commentContent" onclick="openCommentList();"
-             style="cursor: pointer" data-toggle="tooltip" title="Click to view the comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">Comment</div>
+        <div class="col-sm-7" id="commentTitle" style="color: white; font-size: 1vw;">Title</div>
+        <div class="col-sm-4 pull-right" id="commentContent" onclick="openCommentList();"
+             style="cursor: pointer; color: white; font-size: 1vw;" data-toggle="tooltip" title="Click to view the comment" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" onmouseover="tootips();">Comment</div>
         <div id="commentContentTab"></div>
     </div>
 </div>

@@ -4,11 +4,9 @@
 <!--		<div id="preview-comment"></div>-->
 <!--Include the modify page here-->
 <?php include_once ('modify.php');?>
-
 <div id="mapid">
     <!-- Empty div for the map-->
 </div>
-
 <div id="comment-page">
     <div class="comment-header">
         <!--info-->
@@ -22,8 +20,8 @@
         <!--comment-->
         <div class="pull-right" id="routing">
             <!--Add routing page link here-->
-            <a href="http://geosmartcity.dc.turkuamk.fi/?page=home&lang=en">
-                <img src="images/infoicon.png" id="routingPic">
+            <a href="http://gis.dc.turkuamk.fi/">
+                <img src="images/routicon.png" id="routingPic">
             </a>
         </div>
     </div>
@@ -32,7 +30,7 @@
         <div id="info" data-toggle="tooltip" title="Information" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-info','information');" onmouseover="tootips()"><div></div></div>
         <div id="other" data-toggle="tooltip" title="Other" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-other','other')" onmouseover="tootips()"></div>
         <div id="problem" data-toggle="tooltip" title="Problem" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','problem')" onmouseover="tootips()"></div>
-        <div id="problem" data-toggle="tooltip" title="View All" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'mode-problem','viewall')" onmouseover="tootips()"></div>
+        <div id="viewAll" data-toggle="tooltip" title="View All" data-toggle="tooltip" data-placement="top" href="javascript:void(0)" alt="/" onclick="selectIcon(event, 'stat','viewall')" onmouseover="tootips()"></div>
     </div>
     <!--address bar-->
     <div>
@@ -68,7 +66,6 @@
             </div>
         </div>
     </div>
-
     <!--Information mode-->
     <div id="mode-info" class="iconContent">
         <input type="text" class="form-control" name="title" placeholder="Title..">
@@ -99,7 +96,6 @@
             </div>
         </div>
     </div>
-
     <!--Other mode-->
     <div id="mode-other" class="iconContent">
         <input type="text" class="form-control" id="title" placeholder="Title..">
@@ -108,7 +104,6 @@
         <button class="btn btn-default" style="width: 45%" onclick="validateComment(true);">Save</button>
         <button class="btn btn-default" style="width: 45%; float: right" onclick="CbtnOther();">Cancel</button>
     </div>
-
     <!--Problem mode-->
     <div id="mode-problem" class="iconContent">
         <input type="text" class="form-control" id="title" placeholder="Title..">
@@ -139,10 +134,7 @@
             </div>
         </div>
     </div>
-	
 	<div id="commentMainPage"></div>
-	
 	<div id="stat"></div>
-
 </div>
 <?php include 'footer.php';?>
