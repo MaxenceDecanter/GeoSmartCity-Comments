@@ -1,0 +1,435 @@
+body{
+	margin:0;
+	padding:0;
+    font-size: 100%;
+}
+ul > li {
+	list-style: none;
+}
+button > p{
+    font-size: 1.2vw;
+}
+#mapid {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	z-index:0;
+}
+#map-form {
+	margin-left:0px;
+	z-index:2;
+	padding: 5px;
+    color: white;
+    background-color: #282828;
+	position:absolute;
+	left: 10px;
+	top: 80%;
+}
+#map-form a:link{
+    color: #ADD8E6;
+    text-decoration: none;
+}
+#map-form a:visited{
+    color: #f3f470;
+}
+#map-form a:hover{
+    color: #ADD8E6;
+    text-decoration: underline;
+}
+/*Language btn */
+#FI{
+	width: 50px;
+	height: 50px;
+	z-index:2;
+	color: white;
+	background-color: rgb(138, 230, 0);
+	position: absolute;
+	border-radius:5px;
+	padding: 10px;
+	left: 96vw;
+	margin-top: 20px;
+
+}
+#EN{
+	width: 50px;
+	height: 50px;
+	z-index:2;
+	color: white;
+	background-color: rgb(138, 230, 0);
+	position: absolute;
+	border-radius:5px;
+	padding: 10px;
+	left: 92vw;
+	margin-top: 20px;
+}
+#EN:hover,
+#FI:hover{
+	background-color: #4d4d4c;
+}
+.languageBtn{
+	float: right;
+}
+#map-form a:active{
+    color: #FFFFFF;
+}
+#comment-page {
+    width: 23.75vw;
+    z-index:2;
+    color: white;
+    position:absolute;
+    padding: 5px;
+    left:0;
+    top: 0;
+    border-radius: 0.3125vw;
+    border-top: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
+    background-color: #8ae600;
+    text-align: center;
+    overflow: hidden;
+}
+
+.comment-header{
+    width: 23.75vw;
+	display: inline;
+}
+#page-name{
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.1875vw;
+	font-family: sans-serif,Verdana;
+	color: #395817;
+	padding-top: 0.7vh;
+	padding-bottom: 0.7vh;
+	font-weight: lighter;
+}
+#information,
+#routing{
+	display: inline;
+}
+#infoPic{
+    height: 1.2vw;
+    width: 1.2vw;
+    background-size: 100%;
+    margin-top: .5rem;
+	margin-left: .3rem;
+}
+/*Routing icon pic*/
+#routingPic{
+    height: 1.2vw;
+    width: 1.2vw;
+    background-size: 100%;
+	margin-top: .5rem;
+	margin-left: .2rem;
+}
+.search-box,.close-icon,.search-wrapper {
+	position: relative;
+	padding: 10px;
+}
+.search-wrapper {
+	width: 500px;
+	margin: auto;
+	margin-top: 50px;
+}
+.search-box {
+	width: 80%;
+	border: 1px solid #ccc;
+	outline: 0;
+	border-radius: 15px;
+}
+.search-box:focus {
+	box-shadow: 0 0 15px 5px #b0e0ee;
+	border: 2px solid #bebede;
+}
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+	outline: 0;
+	cursor: pointer;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background-color: #FA9595;
+	z-index:1;
+	right: 35px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 12px;
+	box-shadow: 0 0 2px #E50F0F;
+	cursor: pointer;
+}
+.search-box:not(:valid) ~ .close-icon {
+	display: none;
+}
+#modeList{
+	display: inline-block;
+    height: 3vw;
+}
+#modeList > div{
+    display: inline-block;
+    margin: 0.1vw 0.1vw 0.1vw 0.1vw;
+}
+#event{
+	height: 3vw;
+	width: 3vw;
+	background: url(images/event.png) no-repeat;
+	background-size: 100%;
+}
+#info{
+	height: 3vw;
+	width: 3vw;
+	background: url(images/info.png) no-repeat;
+	background-size: 100%;
+}
+#other{
+	height: 3vw;
+	width: 3vw;
+	background: url(images/other.png) no-repeat;
+	background-size: 100%;
+}
+#problem{
+	height: 3vw;
+	width: 3vw;
+	background: url(images/problem.png) no-repeat;
+	background-size: 100%;
+}
+#viewAll{
+	height: 3vw;
+	width: 3vw;
+	background: url(images/all.png) no-repeat;
+	background-size: 100%;
+}
+#mode-info,
+#mode-event,
+#mode-problem,
+#mode-other{
+	display: none;
+}
+#info:hover{
+	border-bottom:3px solid yellow;
+}
+#other:hover{
+	border-bottom:3px solid blue;
+}
+#event:hover{
+	border-bottom:3px solid green;
+}
+#problem:hover{
+	border-bottom:3px solid red;
+}
+/*Address Bar*/
+#addr{
+	margin-bottom: 5px;
+}
+/*Hide mode tabs before the each icons are clicked*/
+#mode-other,
+#mode-event,
+#mode-problem{
+	display: none;
+}
+#mode-info *,
+#mode-other *,
+#mode-event *,
+#mode-problem *{
+	margin-bottom: 5px;
+}
+.btn-set{
+	display: inline;
+}
+.SPC > li{
+	display: inline;
+}
+.date-tab{
+	display: none;
+}
+/*Modify page*/
+#modifyPage,
+#editPage{
+    width: 23.75vw;
+    z-index:1;
+    color: white;
+    position:absolute;
+    padding: 5px;
+    left:0;
+    top: 0;
+    border-radius: 0.3125vw;
+    border-top: solid 1px lightgray;
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
+    background-color: #8ae600;
+    text-align: center;
+    overflow: hidden;
+}
+#modifyPage-header{
+	display: inline;
+}
+#commentInfo > div{
+	text-align: left;
+	color: black;
+	font-size: .7vw;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+#commentContentTab{
+	margin-top: 40px;
+	border: 1px solid white;
+	border-radius: 15px;
+    display: none;
+}
+#btnGroup{
+	cursor: pointer;
+	margin-left: 8.333333325%;
+	font-size: .8vw;
+}
+#commentContentTab{
+	height: 350px;
+}
+#editComment > p,
+#deleteComment > p,
+#cancelComment > p{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 2px;
+    margin-top: 8px;
+}
+/*TODO The media queries not complete for comment page, and and it into the modify page as well */
+/*Media queries*/
+@media only screen and (max-width:770px) {
+    body{
+        font-size: 0.1vw;
+    }
+	#comment-page,
+	#modifyPage{
+		position: fixed;
+		top: 0;
+		left: 0;
+		border-radius: 0.78vw;
+		width: 100vw;
+		background-color: #8ae600;
+		text-align: center;
+		overflow: hidden;
+	}
+	#infoPic {
+		height:5vw;
+        width:5vw;
+        margin-right: 9vw;
+        margin-bottom: 3vw;
+    }
+    #routingPic{
+        height:5vw;
+        width:5vw;
+        margin-left: 9vw;
+        margin-bottom: 3vw;
+    }
+	#page-name{
+		display: inline-block;
+		text-align: center;
+		text-decoration: none;
+		font-size: 5vw;
+		font-family: sans-serif,Verdana ;
+		color:#395817;
+		padding-top: 0.5vh;
+		padding-bottom: 0.5vh;
+		font-weight: lighter;
+	}
+    #modeList,
+	#modifyBtnGroup{
+        margin-bottom: 0;
+    }
+	#modeList > div,
+	#modifyBtnGroup > div{
+		display: inline-block;
+		margin: 2vw;
+	}
+	#event,
+	#info,
+	#problem,
+	#other,
+	#viewAll,
+	#prevBtn,
+	#nextBtn,
+	#removeBtn,
+	#cancelBtn,
+	#nextBtn{
+		height: 8vw;
+		width: 8vw;
+		background-size: 100%;
+	}
+
+	#commentInfo > div{
+		display: inline;
+		text-align: left;
+		color: black;
+		font-size: 2.4vw;
+		margin-bottom: 10px;
+	}
+	#FI,
+	#EN{
+		visibility: hidden;
+	}
+}
+.titleNew{
+	/*margin-left: 50px;*/
+}
+.commentNew{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+/*Edit btns*/
+#modifyBtnGroup{
+	display: inline-block;
+	height: 3vw;
+	margin: 0 auto;
+}
+#modifyBtnGroup > div,
+#modifyBtnGroup > a{
+	display: inline-block;
+	margin: .1vw .5vw .1vw .5vw;
+}
+#prevBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/prev.png) no-repeat;
+	background-size: 100%;
+}
+#editBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/edit.png) no-repeat;
+	background-size: 100%;
+}
+#removeBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/remove.png) no-repeat;
+	background-size: 100%;
+}
+#cancelBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/cancel.png) no-repeat;
+	background-size: 100%;
+	border: none;
+}
+#nextBtn{
+	height: 2.2vw;
+	width: 2.2vw;
+	background: url(images/next.png) no-repeat;
+	background-size: 100%;
+}
+.cancelNew{
+	text-decoration: none;
+}

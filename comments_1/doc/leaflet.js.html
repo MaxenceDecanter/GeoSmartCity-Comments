@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: leaflet.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: leaflet.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var mymap = L.map('mapid').setView([40, 0], 2.8);
+var popup = L.popup();
+var idx_m = 0;
+var tab_markers = [];
+var canPlaceMarker = true;
+var DEBUG = true;
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: '&amp;copy; &lt;a href="http://osm.org/copyright">OpenStreetMap&lt;/a> contributors'
+}).addTo(mymap);
+
+mymap.locate({setView: true, maxZoom: 15});
+displayServerComments();
+
+var LeafIcon = L.Icon.extend({
+    options: {
+        shadowUrl: 'images/problem.png',
+        iconSize:     [60, 58],
+        shadowSize:   [60, 58],
+        iconAnchor:   [30, 47],
+        shadowAnchor: [30, 47],
+        popupAnchor:  [0, -37]
+    }
+});
+
+var problemIcon = new LeafIcon({iconUrl: 'images/problem.png'});
+var infoIcon = new LeafIcon({iconUrl: 'images/info.png'});
+var eventIcon = new LeafIcon({iconUrl: 'images/event.png'});
+var otherIcon = new LeafIcon({iconUrl: 'images/other.png'});
+
+var tmpMarker = "t";
+/**
+*	[Event] Places a marker at the click position on the Map
+* @param {eventObject} e - The event you get from clicking on the map
+*/
+function onMapClick(e) {
+    removeTmpMarkers();
+	if(canPlaceMarker){
+		tmpMarker = addMarker(e.latlng.lat, e.latlng.lng);
+		$('#comment-page').show("slow");
+		$('#add-comment').show("slow");
+        $('#modify-comment').hide("slow");		
+		canPlaceMarker=false;
+	}
+}
+
+/**
+*	Places a marker at the click position on the Map
+* @param {number} lat
+* @param {number} lon
+* @param {string} addr
+*/
+function onSearchClick(lat, lon, addr) {
+    goTo(lat, lon);
+    removeTmpMarkers();
+	if(canPlaceMarker){
+		tmpMarker = addMarker(lat, lon, addr, "eventIcon");
+		$('#comment-page').show("slow");
+		$('#add-comment').show("slow");
+        $('#modify-comment').hide("slow");		
+		canPlaceMarker=false;
+	}
+}
+
+var selectedMarker = "s";
+/**
+*	[Event] Displays the popup attached to the marker
+*    + Displays the modify comment box
+* @param {eventObject} e - The event you get from clicking on the marker
+*/
+function onMarkerClick(e){
+	//console.log(e.target);    //e.target gives the Object on which the event is called
+    goTo(e.target._latlng.lat, e.target._latlng.lng);
+    removeTmpMarkers();
+	selectedMarker = e.target;
+    selectedMarker.dragging.enable();
+    displayComment(selectedMarker);
+	if(selectedMarker != tmpMarker){
+		$('#comment-page').show("slow");
+		$('#modify-comment').show("slow");
+        $('#add-comment').hide("slow");
+		//mymap.removeLayer(marker);
+		selectedMarker.getPopup().togglePopup();
+		lat = e.target._latlng.lat;
+		lng = e.target._latlng.lng;
+	}
+	//console.log(lat, lng);
+	//goTo(lat, lng);
+}
+
+/**
+*	Place a marker on the location of the user and stores it in tmpMarker
+* @param {eventObject} e
+*/
+function locationOfUserMarker(e){
+	console.log(e);
+	lat = e.latitude;
+	lng = e.longitude;
+	tmpMarker = addMarker(lat, lng);
+}
+
+/********************** EVENTS ***************************/
+
+mymap.on('click', onMapClick);
+mymap.on('locationfound', locationOfUserMarker);
+
+document.getElementById('addr').addEventListener('input', function (e) {
+                 addr_search();
+}, false);
+
+var radios = document.forms["add_comment_form"].elements["radio_button"];
+for(var i = 0, max = radios.length; i &lt; max; i++) {
+    radios[i].onclick = function() {
+       change_icon(this.value);
+    }
+}
+
+
+/*********************************************************/
+
+/**
+*	Change the current view of the map to go to the 
+* 	wanted coordinates
+* @param {number} lat
+* @param {number} lon
+*/
+function goTo(lat, lng){
+	mymap.setView([lat, lng], 17);
+}
+
+/**
+*   Removes the temporary markers of the map
+*/
+function removeTmpMarkers(){
+	$('#comment-page').hide();
+    $('#modify-comment').hide();
+	$('#add-comment').hide();
+    if(tmpMarker != "t")
+        mymap.removeLayer(tmpMarker);
+    //if(selectedMarker != "s")
+    //    mymap.removeLayer(selectedMarker);
+    canPlaceMarker=true;
+}
+
+/**
+*	Places a marker with a comment attached
+* @param {boolean} bool
+*/
+function validateComment(bool){
+    comment = createComment();
+    tmpMarker['comment']= comment;
+	$('#comment-page').hide("slow");
+	$('#add-comment').hide("slow");
+	if(!bool){
+		mymap.removeLayer(tmpMarker);
+	}else{
+        addServerMarker(tmpMarker);
+        console.log(tmpMarker);
+    }
+	tmpMarker = "t";
+	canPlaceMarker=true;
+}
+
+/**
+*	Modifies the marker currently selected
+* @param {boolean} bool
+*/
+function modifyComment(bool){
+    $('#comment-page').hide("slow");
+	$('#modify-comment').hide("slow");
+	if(!bool){
+		mymap.removeLayer(selectedMarker);
+        mymap.removeLayer(tmpMarker);
+	}
+    selectedMarker.dragging.disable();
+	selectedMarker = "s";
+}
+
+/**
+*	Add a marker on my map + event
+* @param {number} lat
+* @param {number} lon
+* @param {string} addr
+* @param {string} iconChosen
+*/
+function addMarker(lat, lng, addr, iconChosen){
+    var marker;
+    console.log(iconChosen);
+    switch(iconChosen) {
+        case "Problem":
+            marker = L.marker(L.latLng(lat, lng), {icon: problemIcon}).addTo(mymap);
+            break;
+        case "Information":
+            marker = L.marker(L.latLng(lat, lng), {icon: infoIcon}).addTo(mymap);
+            break;
+        case "Event":
+            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(mymap);
+            break;
+        case "Other":
+            marker = L.marker(L.latLng(lat, lng), {icon: otherIcon}).addTo(mymap);
+            break;
+        default:
+            marker = L.marker(L.latLng(lat, lng), {icon: eventIcon}).addTo(mymap);
+    }
+	var latlng = L.latLng(lat, lng);
+	tab_markers.push(marker);
+    if(addr != undefined){
+        marker.bindPopup(addr).openPopup();
+    }else{
+        var address = "";
+        $.ajax({
+        url: 'http://nominatim.openstreetmap.org/reverse?format=json&amp;lat='+lat+'&amp;lon='+ lng,
+        type: 'get',
+        dataType: 'json',
+        cache: false,
+        success: function(data){
+            address = data.display_name;
+            marker.bindPopup(address).openPopup();
+        },
+        async:true,
+        });
+        
+    }
+	marker.on("click", onMarkerClick);
+	return marker;
+}
+
+function addServerMarker(marker){
+    com = marker.comment;
+    lat = marker._latlng.lat;
+    lng = marker._latlng.lng;
+    
+    r = $.post( "http://gis.dc.turkuamk.fi/guillaume.kleinpoort/baguette/marker.php", { name: com.title, 
+                          d_start: com.date_creation, 
+                          d_end: com.date_creation, 
+                          position: '{"type":"Feature","geometry":{"type":"Point","coordinates":['+lat+','+lng+']},"properties":{"name":"'+marker.getPopup().getContent()+'"}}',
+                          description: com.description,
+                          category: com.type.toLowerCase(),
+                          visible: true}
+           ).done(function( data ) {
+                console.log(r);
+            });;
+   
+}
+
+/*
+function postProcessing(data){
+    var myArray = data;
+       console.log(myArray);
+}
+
+function getValues(url){
+     $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'json',
+        cache: false,
+        success: postProcessing,
+        async:true,
+        });
+};
+*/
+
+function displayServerComments(){
+    var arrayComments;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (xhttp.readyState == 4 &amp;&amp; xhttp.status == 200) {
+            arrayComments = jQuery.parseJSON(xhttp.responseText);              
+            arrayComments.forEach(function(obj){
+              //console.log(obj);  
+              coord = obj.position.geometry.coordinates;
+                lat = coord[0];
+                lon = coord[1];
+                addr = obj.position.properties.name;
+                addMarker(lat, lon, addr, capitalize(obj.category));
+                console.log(capitalize(obj.category));
+            });
+        }
+    };
+    xhttp.open("GET", 'http://gis.dc.turkuamk.fi/guillaume.kleinpoort/baguette/marker.php', true);
+    xhttp.send();
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/**
+*	Removes the marker from the map
+*   @param {L.marker} marker
+*/
+function removeMarker(marker){
+	mymap.removeLayer(marker);
+}
+
+/**
+*	Removes the selectedMarker from the map
+*/
+function removeCurrentMarker(){
+	mymap.removeLayer(selectedMarker);	
+}
+
+/**
+*	Displays the list of matching addresses according to the input
+*/
+function addr_search() {
+	var inp = document.getElementById("addr");
+    $('#search_answers').empty();
+	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&amp;limit=5&amp;q=' + inp.value, function(data) {
+		var items = [];
+		$.each(data, function(key, val) {
+			$('#search_answers').append("&lt;li>&lt;a href='#' onclick='onSearchClick(" +
+					val.lat + ", " + val.lon + ", \"" + val.display_name +"\");'>" + val.display_name +
+					"&lt;/a>&lt;/li>"
+			);
+		});
+	});
+}
+
+function change_icon(name){
+    switch(name) {
+        case "Problem":
+            tmpMarker.setIcon(problemIcon);
+            break;
+        case "Information":
+             tmpMarker.setIcon(infoIcon);
+            break;
+        case "Event":
+             tmpMarker.setIcon(eventIcon);
+            break;
+        case "Other":
+            tmpMarker.setIcon(otherIcon);
+            break;
+        default:
+    }
+}
+
+var tmpComment;
+/**
+*   Creates a new comment with the given informations from the form
+*   @return {Comment} The new Comment object.
+*/
+function createComment(){
+    f = document.getElementById('add-comment-form-id');
+    
+    title= f['title'].value;
+    description = f['description'].value;
+    type=$('#add-comment-form-id input:checked')[0].value;
+    if(type=="Other")
+        type=f['other'].value;
+    f.reset();
+    tmpComment = new Comment(title, description, type, 0);
+    console.log(tmpComment);
+    return tmpComment;
+}
+
+/**
+*   Displays the comment in the console
+*/
+function previewComment(){
+    f = document.getElementById('add-comment-form');
+    
+    title= f['title'].value;
+    description = f['description'].value;
+    type=$('#add-comment-form input:checked')[0].value;
+    //if(type=="Other")
+    //    type=f['other'].value;
+    f.reset();
+    tmpComment = new Comment(title, description, type, 0);
+    console.log(tmpComment);
+    return tmpComment;
+}
+
+/**
+*   Displays the comment contained in the marker
+*   @param {L.marker} marker
+*/
+function displayComment(marker){
+    c= marker.comment;
+    d=$('#display');
+    d.empty();
+    d.append('&lt;p>Title: '+c.title+'&lt;/p>');
+    d.append('&lt;p>Type: '+c.type+'&lt;/p>');
+    d.append('&lt;p>Created on: '+c.date_creation+'&lt;/p>');
+    d.append('&lt;p>Description:'+'&lt;br/>'+c.description+'&lt;/p>');
+}
+
+/**
+*   Creates an instance of Comment
+*
+*   @constructor
+*   @this {Comment}
+*   @param {string} title
+*   @param {string} description
+*   @param {string} type
+*   @param {string} duration
+*/
+function Comment(title, description, type, duration){
+    d = new Date();
+    this.title = title;
+    this.description = description;
+    this.type = type;
+    this.date_creation = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+    //this.end = this.date_creation+duration;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Comment.html">Comment</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMarker">addMarker</a></li><li><a href="global.html#addr_search">addr_search</a></li><li><a href="global.html#createComment">createComment</a></li><li><a href="global.html#displayComment">displayComment</a></li><li><a href="global.html#goTo">goTo</a></li><li><a href="global.html#locationOfUserMarker">locationOfUserMarker</a></li><li><a href="global.html#modifyComment">modifyComment</a></li><li><a href="global.html#onMapClick">onMapClick</a></li><li><a href="global.html#onMarkerClick">onMarkerClick</a></li><li><a href="global.html#onSearchClick">onSearchClick</a></li><li><a href="global.html#previewComment">previewComment</a></li><li><a href="global.html#removeCurrentMarker">removeCurrentMarker</a></li><li><a href="global.html#removeMarker">removeMarker</a></li><li><a href="global.html#removeTmpMarkers">removeTmpMarkers</a></li><li><a href="global.html#validateComment">validateComment</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jun 21 2016 14:07:38 GMT+0300 (FLE (heure d’été))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

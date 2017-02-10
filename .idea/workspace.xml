@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cd1c4749-b12d-4111-8ee8-f60a5bfef348" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/Control.Geocoder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/edit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/cancel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/edit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/next.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/next.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/prev.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/remove.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/images/routicon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/Control.Geocoder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/additionalFunctions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/Comment.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/additional_functions.js.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/address_functions.js.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/comment_functions.js.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/database_functions.js.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/display_functions.js.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Bold-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Bold-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Bold-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-BoldItalic-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-BoldItalic-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-BoldItalic-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Italic-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Italic-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Italic-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Light-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Light-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Light-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-LightItalic-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-LightItalic-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-LightItalic-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Regular-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Regular-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/fonts/OpenSans-Regular-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/global.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/map.js.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/scripts/linenumber.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/scripts/prettify/Apache-License-2.0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/scripts/prettify/lang-css.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/scripts/prettify/prettify.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/styles/jsdoc-default.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/styles/prettify-jsdoc.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/javascript_documentation/styles/prettify-tomorrow.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/lang.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/javascript/leaflet-routing-machine.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/leaflet-routing-machine.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/comments/leaflet.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/css/print.css" afterPath="$PROJECT_DIR$/comments/baguette/doc/css/print.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/css/reset.css" afterPath="$PROJECT_DIR$/comments/baguette/doc/css/reset.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/css/screen.css" afterPath="$PROJECT_DIR$/comments/baguette/doc/css/screen.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/css/style.css" afterPath="$PROJECT_DIR$/comments/baguette/doc/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/css/typography.css" afterPath="$PROJECT_DIR$/comments/baguette/doc/css/typography.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/index.html" afterPath="$PROJECT_DIR$/comments/baguette/doc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/en.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/en.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/es.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/fr.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/fr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/geo.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/geo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/it.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/it.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/ja.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/ja.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/pl.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/pl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/pt.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/pt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/ru.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/ru.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/tr.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/tr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/translator.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/translator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lang/zh-cn.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lang/zh-cn.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/backbone-min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/backbone-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/handlebars-2.0.0.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/handlebars-2.0.0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/highlight.9.1.0.pack.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/highlight.9.1.0.pack.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/highlight.9.1.0.pack_extended.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/highlight.9.1.0.pack_extended.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery-1.8.0.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery-1.8.0.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery.ba-bbq.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery.ba-bbq.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery.slideto.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery.slideto.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery.wiggle.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/jquery.wiggle.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/js-yaml.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/js-yaml.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/jsoneditor.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/jsoneditor.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/lodash.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/lodash.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/marked.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/marked.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/object-assign-pollyfill.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/object-assign-pollyfill.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/lib/swagger-oauth.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/lib/swagger-oauth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/o2c.html" afterPath="$PROJECT_DIR$/comments/baguette/doc/o2c.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/swagger-ui.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/swagger-ui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/swagger-ui.min.js" afterPath="$PROJECT_DIR$/comments/baguette/doc/swagger-ui.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/doc/swagger.json" afterPath="$PROJECT_DIR$/comments/baguette/doc/swagger.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/marker.php" afterPath="$PROJECT_DIR$/comments/baguette/marker.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/report.php" afterPath="$PROJECT_DIR$/comments/baguette/report.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Database.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Models/AbstractModel.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Models/AbstractModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Models/MarkerModel.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Models/MarkerModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Models/ReportModel.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Models/ReportModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Pages/Marker.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Pages/Marker.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Pages/Page.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Pages/Page.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Pages/Report.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Pages/Report.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Tables/MarkerTable.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Tables/MarkerTable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/src/Tables/ReportTable.php" afterPath="$PROJECT_DIR$/comments/baguette/src/Tables/ReportTable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/autoload.php" afterPath="$PROJECT_DIR$/comments/baguette/vendor/autoload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/ClassLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/LICENSE" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_classmap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_namespaces.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_psr4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/autoload_real.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/baguette/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/comments/baguette/vendor/composer/installed.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/Comment.html" afterPath="$PROJECT_DIR$/comments/doc/Comment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Bold-webfont.svg" afterPath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Bold-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-BoldItalic-webfont.svg" afterPath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-BoldItalic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Italic-webfont.svg" afterPath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Italic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Light-webfont.svg" afterPath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Light-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-LightItalic-webfont.svg" afterPath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-LightItalic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Regular-webfont.svg" afterPath="$PROJECT_DIR$/comments/doc/fonts/OpenSans-Regular-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/index.html" afterPath="$PROJECT_DIR$/comments/doc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/leaflet.js.html" afterPath="$PROJECT_DIR$/comments/doc/leaflet.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/scripts/bootstrap.js" afterPath="$PROJECT_DIR$/comments/doc/scripts/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/scripts/linenumber.js" afterPath="$PROJECT_DIR$/comments/doc/scripts/linenumber.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/scripts/prettify/Apache-License-2.0.txt" afterPath="$PROJECT_DIR$/comments/doc/scripts/prettify/Apache-License-2.0.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/scripts/prettify/lang-css.js" afterPath="$PROJECT_DIR$/comments/doc/scripts/prettify/lang-css.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/scripts/prettify/prettify.js" afterPath="$PROJECT_DIR$/comments/doc/scripts/prettify/prettify.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/styles/bootstrap.css" afterPath="$PROJECT_DIR$/comments/doc/styles/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/styles/jsdoc-default.css" afterPath="$PROJECT_DIR$/comments/doc/styles/jsdoc-default.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/styles/prettify-jsdoc.css" afterPath="$PROJECT_DIR$/comments/doc/styles/prettify-jsdoc.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/doc/styles/prettify-tomorrow.css" afterPath="$PROJECT_DIR$/comments/doc/styles/prettify-tomorrow.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/editComment.php" afterPath="$PROJECT_DIR$/comments/editComment.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/examples/leaflet_tutorial.js" afterPath="$PROJECT_DIR$/comments/examples/leaflet_tutorial.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/examples/reverse_geocoding.html" afterPath="$PROJECT_DIR$/comments/examples/reverse_geocoding.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/footer.php" afterPath="$PROJECT_DIR$/comments/footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/header.php" afterPath="$PROJECT_DIR$/comments/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/index.php" afterPath="$PROJECT_DIR$/comments/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/css_functions.js" afterPath="$PROJECT_DIR$/comments/javascript/css_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/database_functions.js" afterPath="$PROJECT_DIR$/comments/javascript/database_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/display_functions.js" afterPath="$PROJECT_DIR$/comments/javascript/display_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/Comment.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/Comment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/additional_functions.js.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/additional_functions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/address_functions.js.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/address_functions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/comment_functions.js.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/comment_functions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/database_functions.js.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/database_functions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/display_functions.js.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/display_functions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Bold-webfont.svg" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Bold-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-BoldItalic-webfont.svg" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-BoldItalic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Italic-webfont.svg" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Italic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Light-webfont.svg" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Light-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-LightItalic-webfont.svg" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-LightItalic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Regular-webfont.svg" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/fonts/OpenSans-Regular-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/index.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/map.js.html" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/map.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/linenumber.js" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/linenumber.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/prettify/Apache-License-2.0.txt" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/prettify/Apache-License-2.0.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/prettify/lang-css.js" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/prettify/lang-css.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/prettify/prettify.js" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/scripts/prettify/prettify.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/styles/jsdoc-default.css" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/styles/jsdoc-default.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/styles/prettify-jsdoc.css" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/styles/prettify-jsdoc.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/javascript/js_doc/styles/prettify-tomorrow.css" afterPath="$PROJECT_DIR$/comments/javascript/js_doc/styles/prettify-tomorrow.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/leaflet.css" afterPath="$PROJECT_DIR$/comments/leaflet.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/licence.txt" afterPath="$PROJECT_DIR$/comments/licence.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/modify.php" afterPath="$PROJECT_DIR$/comments/modify.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/sources" afterPath="$PROJECT_DIR$/comments/sources" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comments/widgets/languageButtom.php" afterPath="$PROJECT_DIR$/comments/widgets/languageButtom.php" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="css_functions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comments/javascript/css_functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2574">
+              <caret line="120" column="26" lean-forward="false" selection-start-line="120" selection-start-column="26" selection-end-line="120" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="leaflet.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comments/leaflet.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="379" column="0" lean-forward="false" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all.png" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/comments_1/images/all.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database_functions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comments/javascript/database_functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="44" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comments/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>modify</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/comments/javascript/css_functions.js" />
+        <option value="$PROJECT_DIR$/comments/leaflet.css" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoSmartCity-Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoSmartCity-Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoSmartCity-Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoSmartCity-Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comments_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoSmartCity-Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeoSmartCity-Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comments_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd1c4749-b12d-4111-8ee8-f60a5bfef348" name="Default" comment="" />
+      <created>1485775107322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1485775107322</updated>
+      <workItem from="1485775115277" duration="4164000" />
+      <workItem from="1485956604958" duration="645000" />
+      <workItem from="1486042539984" duration="1222000" />
+      <workItem from="1486166015235" duration="586000" />
+      <workItem from="1486714683682" duration="107000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6724000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24532536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/comments/javascript/css_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2640">
+          <caret line="120" column="26" lean-forward="false" selection-start-line="120" selection-start-column="26" selection-end-line="120" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/leaflet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/database_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/css_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2640">
+          <caret line="120" column="26" lean-forward="false" selection-start-line="120" selection-start-column="26" selection-end-line="120" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/leaflet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/database_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/css_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="120" column="26" lean-forward="false" selection-start-line="120" selection-start-column="26" selection-end-line="120" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/leaflet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/database_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/css_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/database_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/database_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/javascript/css_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2574">
+          <caret line="120" column="26" lean-forward="false" selection-start-line="120" selection-start-column="26" selection-end-line="120" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments/leaflet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="379" column="0" lean-forward="false" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comments_1/images/all.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+  </component>
+</project>
