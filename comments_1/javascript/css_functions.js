@@ -104,12 +104,11 @@ function editComment(){
     var title = document.getElementById("modifyBtnGroup");
     var comment = document.getElementById("commentTitle");
     var save = document.getElementById("commentContent");
+    var cancel = document.getElementById("commentContentTab");
     var titleNew = document.createElement("input");
     var commentNew = document.createElement("textarea");
     var saveBtn = document.createElement("input");
-    var cancel = document.getElementById("commentContentTab");
-    var cancelNew = document.createElement("a");
-    var linkText = document.createTextNode("Cancel");
+    var cancelBtn = document.createElement("input");
     pageName.innerHTML = "Edit page";
     titleNew.placeholder="Type new title here ..";
     titleNew.setAttribute("class", "titleNew form-control ");
@@ -118,18 +117,18 @@ function editComment(){
     saveBtn.type = "button";
     saveBtn.value = "Save";
     saveBtn.setAttribute("class", "btn col-sm-6 btn-default");
+    cancelBtn.type = "button";
+    cancelBtn.value = "Cancel";
+    cancelBtn.setAttribute("class", "btn col-sm-6 btn-default");
     title.parentNode.replaceChild(titleNew, title);
     comment.parentNode.replaceChild(commentNew, comment);
     save.parentNode.replaceChild(saveBtn, save);
-    cancelNew.appendChild(linkText);
-    cancelNew.setAttribute("class", "btn col-sm-6 btn-default cancelNew");
-    // cancelNew.setAttribute("href", "showModifyPage()");
-    cancelNew.onclick = showModifyPage();
-    cancel.parentNode.replaceChild(cancelNew, cancel);
-}
-//Go back to the index.php from edit page
-function send(){
-    window.location.url= '../index.php';
+    cancel.parentNode.replaceChild(cancelBtn, cancel);
+    cancelBtn.addEventListener("click", function(){
+        $("#comment-page").show();
+        $("#modifyPage").hide();
+    });
+    cancel.parentNode.replaceChild(cancelBtn, cancel);
 }
 
 // Showing/hiding languge buttons for mobile screen
