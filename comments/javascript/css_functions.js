@@ -2,8 +2,6 @@
 Licensed under the EUPL V.1.1 
 by Zhao HONGYU
 */
-
-
 //Showing each icon's content
 function openIcon(evt, iconName) {
     var i,iconcentent, icon;
@@ -18,8 +16,6 @@ function openIcon(evt, iconName) {
     document.getElementById(iconName).style.display = "block";
     evt.currentTarget.className += "active";
 }
-
-
 // //Open & close time tab
 function openInfoDate(){
 	$("#info-date").show();
@@ -51,22 +47,6 @@ function multipleCloseProblemDateFuncs() {
     putActualTime();
     closeProblemDate();
 }
-// function problemDate() {
-//     var problem_date = document.getElementById("problem-date");
-//     if(problem_date.style.display === 'none') {
-//         problem_date.style.display = 'block';
-//     } else {
-//         problem_date.style.display = 'none';
-//     }
-// }
-// function eventDate() {
-//     var event_date = document.getElementById("event-date");
-//     if(event_date.style.display === 'none') {
-//         event_date.style.display = 'block';
-//     } else {
-//         event_date.style.display = 'none';
-//     }
-// }
 function tootips() {
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -80,6 +60,7 @@ function CbtnInfo(){
 }
 function cancelInfo() {
     $("#mode-info").hide();
+    $("#stat").hide();
 }
 function CbtnOther(){
     validateComment(false);
@@ -87,6 +68,7 @@ function CbtnOther(){
 }
 function cancelOther() {
     $("#mode-other").hide();
+    $("#stat").hide();
 }
 function CbtnEvent(){
     validateComment(false);
@@ -94,6 +76,7 @@ function CbtnEvent(){
 }
 function cancelEvent() {
     $("#mode-event").hide();
+    $("#stat").hide();
 }
 function CbtnProblem(){
     validateComment(false);
@@ -101,8 +84,8 @@ function CbtnProblem(){
 }
 function cancelProblem() {
     $("#mode-problem").hide();
+    $("#stat").hide();
 }
-
 function showModifyPage() {
     $("#modifyPage").show();
     $("#comment-page").hide();
@@ -113,18 +96,53 @@ function multipleModifyFuns() {
 	loadTabModifyComment();
 	displayModifyComment(0);
 }
-
 //Modify page
 	//open comments list
 function openCommentList() {
     $("#commentContentTab").show();
-    $("#btnGroup").show();
     $("#arrowGroup").show();
-	
 }
-//Edit comments part
-function showEditPage() {
-    $("#editPage").show();
-    $("#comment-page").hide();
-    $("#modifyPage").hide();
+//Replace Title and comment tab to the inputBox and textarea
+function editComment(){
+    var pageName = document.getElementById("page-name");
+    var title = document.getElementById("modifyBtnGroup");
+    var comment = document.getElementById("commentTitle");
+    var save = document.getElementById("commentContent");
+    var cancel = document.getElementById("commentContentTab");
+    var titleNew = document.createElement("input");
+    var commentNew = document.createElement("textarea");
+    var saveBtn = document.createElement("input");
+    var cancelBtn = document.createElement("input");
+    pageName.innerHTML = "Edit page";
+    titleNew.placeholder="Type new title here ..";
+    titleNew.setAttribute("class", "titleNew form-control ");
+    commentNew.setAttribute("class", "commentNew form-control col-sm-12");
+    commentNew.placeholder="Type new comment here ..";
+    saveBtn.type = "button";
+    saveBtn.value = "Save";
+    saveBtn.setAttribute("class", "btn col-sm-6 btn-default");
+    cancelBtn.type = "button";
+    cancelBtn.value = "Cancel";
+    cancelBtn.setAttribute("class", "btn col-sm-6 btn-default");
+    title.parentNode.replaceChild(titleNew, title);
+    comment.parentNode.replaceChild(commentNew, comment);
+    save.parentNode.replaceChild(saveBtn, save);
+    cancel.parentNode.replaceChild(cancelBtn, cancel);
+    cancelBtn.addEventListener("click", function(){
+        $("#comment-page").show();
+        $("#modifyPage").hide();
+    });
+    cancel.parentNode.replaceChild(cancelBtn, cancel);
 }
+
+// Showing/hiding languge buttons for mobile screen
+$(".langButton").click(function () {
+    if ($("#myNavbar").is(":hidden")) {
+        $("#myNavbar").show("fast");
+        $("#langArrow").addClass("arrow-down").removeClass("arrow-up");
+    }
+    else {
+        $("#myNavbar").hide("fast");
+        $("#langArrow").addClass("arrow-up").removeClass("arrow-down");
+    }
+});

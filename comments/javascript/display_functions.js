@@ -36,7 +36,7 @@ function addMarker(lat, lng, addr, iconChosen, title, d_start, description,id){
         var geocoder = new google.maps.Geocoder();																				//
 		var latlng = new google.maps.LatLng(lat, lng);																			//
 		geocoder.geocode({'latLng': latlng}, function(results, status) {														//
-		/* Si le gÃ©ocodage inversÃ© a rÃ©ussi */																					// Add by DECANTER Maxence
+		/* Si le géocodage inversé a réussi */																					// Add by DECANTER Maxence
 		if (status == google.maps.GeocoderStatus.OK) {																			//																		//
 			marker.bindPopup(results[0].formatted_address+"<a href='#' onclick='previewComment();'> <strong>View</strong></a>").openPopup();	//
 			$(".form-control:eq(0)").val(results[0].formatted_address);															//
@@ -155,7 +155,7 @@ function displayModifyComment(i){
 	b.append('<h5>'+tab_modify[i][2]+'</h5>')
 	var c = $('#commentTitle');
 	c.empty();
-	c.append('<h5>Title</h5>')
+	
 	c.append('<h5>'+tab_modify[i][1]+'</h5>')
 	var d = $('#comment');
 	d.empty();
